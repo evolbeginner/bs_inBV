@@ -4,7 +4,7 @@ A tool to help generate the file in.BV when using "complex" substitution models 
 # Idea #
 People have increasingly realized the importance of using more complex substitution models in modeling sequence evolution, particularly for deep-time evolution and in case the sequence divergence is large. MCMCTree supports only a number of substitution models. These models, however, may be available in other software specifically used for tree construction, e.g., IQ-Tree and RAxML.
 
-To work with the approximate likelihood method of MCMCTree (usedata=2), one needs to get the MLE (maximum likelihood estimate) of the branch length, as well as the gradient and hessian evaluated at the MLE. This tool takes the advantages of the abundant substitution models of IQ-Tree. Briefly, the tool uses IQ-Tree's estimate of the branch length, set the gradient to all zeros, and importantly, #approximate the hessian by calculating the negative inverse of the bootstrap covariance matrix of branch length estimates#.
+To work with the approximate likelihood method of MCMCTree (usedata=2), one needs to get the MLE (maximum likelihood estimate) of the branch length, as well as the gradient and hessian evaluated at the MLE. This tool takes the advantages of the abundant substitution models of IQ-Tree. Briefly, the tool uses IQ-Tree's estimate of the branch length, set the gradient to all zeros, and importantly, **approximate the hessian by calculating the negative inverse of the bootstrap covariance matrix of branch length estimates**.
 
 # Installation
 Make sure [RUBY] (https://www.ruby-lang.org/en/) is installed.

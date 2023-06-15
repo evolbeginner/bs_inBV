@@ -9,7 +9,7 @@ To work with the approximate likelihood method of MCMCTree (usedata=2), one need
 
 
 # Installation
-Make sure [RUBY] (https://www.ruby-lang.org/en/) is installed.
+Make sure [RUBY](https://www.ruby-lang.org/en/) is installed.
 
 Many scripts included in this product require the following RUBY packages. If any is not installed, please install it by `gem install package_name`.
 * parallel

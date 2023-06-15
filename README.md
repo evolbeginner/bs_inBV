@@ -48,5 +48,5 @@ This product also employs several other computational tools. Please ensure that 
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
 
 # How to cite
-You may also need to cite corresponding papers for the use of PAML and IQ-Tree.
+You may also need to cite corresponding papers for the use of PAML, IQ-Tree, and Newick_Utilities.
 

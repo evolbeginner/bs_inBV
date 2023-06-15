@@ -18,6 +18,7 @@ Many scripts included in this product require the following RUBY packages. If an
 This product also employs several other computational tools. Please ensure that you have them installed.
 * [PAML](https://github.com/abacus-gene/paml)
 * [IQ-Tree](http://www.iqtree.org/)
+* [newick_utilities](https://github.com/tjunier/newick_utils)
 
 # Usage #
 1. Perform a regular MCMCTree analysis. To save time, you can run with only the prior (e.g., set usedata = 0 in mcmctree.ctl) and very few iterations (set burnin=1, sampfreq=1, nsample=1 in mcmctree.ctl).

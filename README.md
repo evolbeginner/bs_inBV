@@ -10,8 +10,8 @@ To work with the approximate likelihood method of MCMCTree (usedata=2), one need
 Make sure [RUBY] (https://www.ruby-lang.org/en/) is installed.
 
 Many scripts included in this product require the following RUBY packages. If any is not installed, please install it by `gem install package_name`.
-* [parallel]
-* [colorize]
+* parallel
+* colorize
 
 This product also employs several other computational tools. Please ensure that you have them installed.
 * [PAML](https://github.com/abacus-gene/paml)

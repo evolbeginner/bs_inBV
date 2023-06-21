@@ -43,9 +43,15 @@ This product also employs several other computational tools. Please ensure that 
       * `--mcmctree_ctl`: the control file for MCMCTree
       * `--pmsf`: use the PMSF approximation
 
+4. Output
+  Go to the folder "Sample". Run `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`. Note that as detailed above, the files "ref.tre" and "mcmctree.ctl" are obtained by running a regular MCMCTree analysis prior to using create_hessian_by_bootstrapping.
+  *  C20/split:  IQ-Tree output
+  * C20/mcmctree:  MCMCTree results. The branch length estimated by the specified model (in the example "-m LG+G+C20"), gradients, and the approximated hessian by bootstrap in the in.BV
+
 # Notes #
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
+3. In case of problems due to invertible variance-covariance matrix of the branch lengths, try either increasing bootstrap no. or avoiding too closely related species.
 
 # How to cite
 You may also need to cite corresponding papers for the use of PAML, IQ-Tree, and Newick_Utilities.

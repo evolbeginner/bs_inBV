@@ -44,7 +44,7 @@ This product also employs several other computational tools. Please ensure that 
       * `--pmsf`: use the PMSF approximation
 
 4. Output
-  Go to the folder "Sample". Run `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`. Note that as detailed above, the files "ref.tre" and "mcmctree.ctl" are obtained by running a regular MCMCTree analysis prior to using create_hessian_by_bootstrapping. The example data are simulated using LG+C20+G assuming a root age of 4.0 Ga. For the details of simulation, see [link](https://sishuowang2022.wordpress.com/2023/06/20/substitution-models-lgcxx-and-cxxlg-differ-in-iq-tree/ for details).
+  Go to the folder "Sample". Run `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`. Note that as detailed above, the files "ref.tre" and "mcmctree.ctl" are obtained by running a regular MCMCTree analysis prior to using create_hessian_by_bootstrapping. The example data are simulated using LG+C20+G assuming a root age of 4.0 Ga. For the details of simulation, see [link](https://sishuowang2022.wordpress.com/2023/06/20/substitution-models-lgcxx-and-cxxlg-differ-in-iq-tree/).
     * C20/split:  IQ-Tree output
     * C20/mcmctree:  MCMCTree results. The branch length estimated by the specified model (in the example "-m LG+G+C20"), gradients, and the approximated hessian by bootstrap in the in.BV
 

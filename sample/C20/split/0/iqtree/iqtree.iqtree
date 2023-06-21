@@ -3,7 +3,7 @@ IQ-TREE 2.2.2.6 COVID-edition built May 27 2023
 Input file name: C20/split/0/combined.phy
 User tree file name: ref.tre
 Type of analysis: tree reconstruction + non-parametric bootstrap (100 replicates)
-Random seed number: 386216
+Random seed number: 290341
 
 REFERENCES
 ----------
@@ -227,7 +227,7 @@ For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
 TIME STAMP
 ----------
 
-Date and time: Wed Jun 21 11:34:37 2023
-Total CPU time used: 0.384769 seconds (0h:0m:0s)
-Total wall-clock time used: 0.07465291023 seconds (0h:0m:0s)
+Date and time: Wed Jun 21 11:50:47 2023
+Total CPU time used: 0.3786 seconds (0h:0m:0s)
+Total wall-clock time used: 0.07505297661 seconds (0h:0m:0s)
 

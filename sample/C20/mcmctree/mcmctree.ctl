@@ -28,6 +28,6 @@
       finetune = 1: .1 .1 .1 .1 .1 .1 * auto (0 or 1): times, musigma2, rates, mixing, paras, FossilErr
 
          print = 1
-        burnin = 1
+        burnin = 1000
       sampfreq = 2
-       nsample = 3
+       nsample = 5000

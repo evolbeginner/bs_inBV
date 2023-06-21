@@ -4,17 +4,17 @@ Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan
 
 Host:    cuhk-mic (AVX512, FMA3, 376 GB RAM)
 Command: iqtree -redo -s C20/split/0/combined.phy -pre C20/split/0/iqtree/guide -T 8 -quiet -m LG4M+G -te ref.tre
-Seed:    328279 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Wed Jun 21 11:34:32 2023
+Seed:    231843 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Jun 21 11:50:43 2023
 Kernel:  AVX+FMA - 8 threads (72 CPU cores detected)
 
 Reading alignment file C20/split/0/combined.phy ... Phylip format detected
 Alignment most likely contains protein sequences
-Constructing alignment: done in 0.000597954 secs
+Constructing alignment: done in 0.000580072 secs
 Alignment has 30 sequences with 100 columns, 90 distinct patterns
 59 parsimony-informative, 15 singleton sites, 26 constant sites
      Gap/Ambiguity  Composition  p-value
-Analyzing sequences: done in 2.5034e-05 secs
+Analyzing sequences: done in 2.40803e-05 secs
    1  t3     0.00%    passed     99.98%
    2  t24    0.00%    passed     98.60%
    3  t22    0.00%    passed     99.90%
@@ -48,7 +48,7 @@ Analyzing sequences: done in 2.5034e-05 secs
 ****  TOTAL    0.00%  0 sequences failed composition chi2 test (p-value<5%; df=18)
 NOTE: t7 is identical to t1 but kept for subsequent analysis
 Checking for duplicate sequences: done in 0.000293016 secs
-Identifying sites to remove: done in 0.000196934 secs
+Identifying sites to remove: done in 0.000203133 secs
 NOTE: 1 identical sequences (see below) will be ignored for subsequent analysis
 NOTE: t17 (identical to t1) is ignored but added at the end
 Alignment was printed to C20/split/0/iqtree/guide.uniqueseq.phy
@@ -68,7 +68,7 @@ Estimate model parameters (epsilon = 0.010)
 3. Current log-likelihood: -1666.529
 Optimal log-likelihood: -1666.529
 Gamma shape alpha: 1.222
-Parameters optimization took 3 rounds (0.019 sec)
+Parameters optimization took 3 rounds (0.020 sec)
 Wrote distance file to... 
 BEST SCORE FOUND : -1666.529
 Total tree length: 3.570
@@ -76,7 +76,7 @@ Total tree length: 3.570
 Total number of iterations: 0
 CPU time used for tree search: 0.000 sec (0h:0m:0s)
 Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
-Total CPU time used: 0.251 sec (0h:0m:0s)
+Total CPU time used: 0.266 sec (0h:0m:0s)
 Total wall-clock time used: 0.033 sec (0h:0m:0s)
 
 Analysis results written to: 
@@ -84,4 +84,4 @@ Analysis results written to:
   Maximum-likelihood tree:       C20/split/0/iqtree/guide.treefile
   Screen log file:               C20/split/0/iqtree/guide.log
 
-Date and Time: Wed Jun 21 11:34:32 2023
+Date and Time: Wed Jun 21 11:50:43 2023

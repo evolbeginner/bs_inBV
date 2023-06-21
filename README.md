@@ -14,8 +14,6 @@ Make sure [RUBY](https://www.ruby-lang.org/en/) is installed.
 Many scripts included in this product require the following RUBY packages. If any is not installed, please install it by `gem install package_name`.
 * parallel
 * colorize
-* bio
-* bio-nwk
 
 This product also employs several other computational tools. Please ensure that you have them installed.
 * [PAML](https://github.com/abacus-gene/paml)
@@ -45,23 +43,9 @@ This product also employs several other computational tools. Please ensure that 
       * `--mcmctree_ctl`: the control file for MCMCTree
       * `--pmsf`: use the PMSF approximation
 
-4. Output: sample/C20
-   Command: `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`
-   Note that ref.tre and mcmctree.ctl are obtained by first running a mcmctree (see sample/mcmctree/combined/).
-    * split/: the iqtree output
-      * split/0/:  the first partition (**in case of multiple partitions, they will be named as 0, 1, ... and will be merged into a single in.BV at the end**)
-        * split/0/iqtree/boot.bls:  branch length estimates of each bootstrapped trees
-        * split/0/iqtree/ml.bls:  branch length estimates of the best tree (iqtree.treefile)
-    * mcmctree/: the MCMCTree output
-      * mcmctree/FigTree.tre:  the timetree in Nexus format. This is what you typically expect to get in a regular MCMCTree analysis.
-      * mcmctree/figtree.nwk:  the timetree in Newick format.
-
-
 # Notes #
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
-3. In case the bootstrap covariance matrix is invertible, you may want to try to increase the no. of bootstraps (-b) or avoid using too closely related species.
-
 
 # How to cite
 You may also need to cite corresponding papers for the use of PAML, IQ-Tree, and Newick_Utilities.

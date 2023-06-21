@@ -46,6 +46,8 @@ This product also employs several other computational tools. Please ensure that 
 # Notes #
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
+3. In case the bootstrap covariance matrix is invertible, you may want to try to increase the no. of bootstraps (-b) or avoid using too closely related species.
+
 
 # How to cite
 You may also need to cite corresponding papers for the use of PAML, IQ-Tree, and Newick_Utilities.

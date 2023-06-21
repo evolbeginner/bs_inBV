@@ -46,6 +46,8 @@ This product also employs several other computational tools. Please ensure that 
       * `--pmsf`: use the PMSF approximation
 
 4. Output: sample/C20
+   Command: `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`
+   Note that ref.tre and mcmctree.ctl are obtained by first running a mcmctree (see sample/mcmctree/combined/).
     * split/: the iqtree output
       * split/0/:  the first partition (**in case of multiple partitions, they will be named as 0, 1, ... and will be merged into a single in.BV at the end**)
         * split/0/iqtree/boot.bls:  branch length estimates of each bootstrapped trees

@@ -45,8 +45,8 @@ This product also employs several other computational tools. Please ensure that 
 
 4. Output
   Go to the folder "Sample". Run `ruby create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir C20 --ref ref.tre --force -b 100 --cpu 8 -m LG+G+C20 --mcmctree_ctl mcmctree.ctl --run_mcmctree --pmsf`. Note that as detailed above, the files "ref.tre" and "mcmctree.ctl" are obtained by running a regular MCMCTree analysis prior to using create_hessian_by_bootstrapping.
-  *  C20/split:  IQ-Tree output
-  * C20/mcmctree:  MCMCTree results. The branch length estimated by the specified model (in the example "-m LG+G+C20"), gradients, and the approximated hessian by bootstrap in the in.BV
+    * C20/split:  IQ-Tree output
+    * C20/mcmctree:  MCMCTree results. The branch length estimated by the specified model (in the example "-m LG+G+C20"), gradients, and the approximated hessian by bootstrap in the in.BV
 
 # Notes #
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.

@@ -9,8 +9,8 @@ require 'tmpdir'
 require 'find'
 require 'colorize'
 
-require_relative 'Dir'
-require_relative 'processbar'
+require_relative 'lib/Dir'
+require_relative 'lib/processbar'
 require_relative 'lib/do_mcmctree.rb'
 
 

@@ -43,6 +43,16 @@ This product also employs several other computational tools. Please ensure that 
       * `--mcmctree_ctl`: the control file for MCMCTree
       * `--pmsf`: use the PMSF approximation
 
+4. Output: sample/C20
+  * split/: the iqtree output
+    * split/0/:  the first partition (#in case of multiple partitions, they will be named as 0, 1, ... and will be merged into a single in.BV at the end#)
+      * split/0/iqtree/boot.bls:  branch length estimates of each bootstrapped trees
+      * split/0/iqtree/ml.bls:  branch length estimates of the best tree (iqtree.treefile)
+  * mcmctree/: the MCMCTree output
+    * mcmctree/FigTree.tre:  the timetree in Nexus format. This is what you typically expect to get in a regular MCMCTree analysis.
+    * mcmctree/figtree.nwk:  the timetree in Newick format.
+
+
 # Notes #
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.

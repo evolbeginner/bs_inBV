@@ -1,0 +1,2925 @@
+IQ-TREE multicore version 2.2.2.6 COVID-edition for Linux 64-bit built May 27 2023
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    cuhk-mic (AVX512, FMA3, 376 GB RAM)
+Command: iqtree -redo -s C20/split/0/combined.phy -pre C20/split/0/iqtree/iqtree -T 8 -quiet -m LG+G+C20 -b 100 -te ref.tre -ft C20/split/0/iqtree/guide.treefile -blmin 1e-10
+Seed:    386216 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Jun 21 11:34:32 2023
+Kernel:  AVX+FMA - 8 threads (72 CPU cores detected)
+
+Reading alignment file C20/split/0/combined.phy ... Phylip format detected
+Alignment most likely contains protein sequences
+Constructing alignment: done in 0.00057888 secs using 686% CPU
+Alignment has 30 sequences with 100 columns, 90 distinct patterns
+59 parsimony-informative, 15 singleton sites, 26 constant sites
+     Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 2.28882e-05 secs using 91.75% CPU
+   1  t3     0.00%    passed     99.98%
+   2  t24    0.00%    passed     98.60%
+   3  t22    0.00%    passed     99.90%
+   4  t1     0.00%    passed     99.99%
+   5  t7     0.00%    passed     99.99%
+   6  t17    0.00%    passed     99.99%
+   7  t18    0.00%    passed     99.97%
+   8  t21    0.00%    passed     99.88%
+   9  t19    0.00%    passed     91.41%
+  10  t16    0.00%    passed     98.57%
+  11  t15    0.00%    passed     99.53%
+  12  t5     0.00%    passed     99.97%
+  13  t8     0.00%    passed    100.00%
+  14  t23    0.00%    passed     99.99%
+  15  t14    0.00%    passed     99.99%
+  16  t9     0.00%    passed     99.90%
+  17  t27    0.00%    passed    100.00%
+  18  t29    0.00%    passed     97.76%
+  19  t20    0.00%    passed     99.99%
+  20  t10    0.00%    passed     99.83%
+  21  t28    0.00%    passed     99.87%
+  22  t30    0.00%    passed     98.97%
+  23  t12    0.00%    passed     99.99%
+  24  t13    0.00%    passed    100.00%
+  25  t6     0.00%    passed     99.73%
+  26  t25    0.00%    passed     99.93%
+  27  t11    0.00%    passed     99.72%
+  28  t2     0.00%    passed     99.98%
+  29  t4     0.00%    passed     98.26%
+  30  t26    0.00%    passed    100.00%
+****  TOTAL    0.00%  0 sequences failed composition chi2 test (p-value<5%; df=18)
+
+===> COMPUTING SITE FREQUENCY MODEL BASED ON TREE FILE C20/split/0/iqtree/guide.treefile
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+NOTE: 41 MB RAM is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+1. Initial log-likelihood: -1625.796
+2. Current log-likelihood: -1624.556
+Optimal log-likelihood: -1624.548
+Mixture weights: 0.056 0.051 0.081 0.072 0.056 0.033 0.059 0.026 0.031 0.038 0.030 0.081 0.026 0.058 0.037 0.059 0.056 0.035 0.054 0.060
+Gamma shape alpha: 1.003
+Parameters optimization took 2 rounds (0.146 sec)
+Computing posterior mean site frequencies....
+Site state frequency vectors printed to C20/split/0/iqtree/iqtree.sitefreq
+
+===> CONTINUE ANALYSIS USING THE INFERRED SITE FREQUENCY MODEL
+
+===> START BOOTSTRAP REPLICATE NUMBER 1
+
+Creating bootstrap alignment (seed: 386216)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1593.608
+2. Current log-likelihood: -1560.518
+3. Current log-likelihood: -1560.357
+Optimal log-likelihood: -1560.356
+Gamma shape alpha: 0.757
+Parameters optimization took 3 rounds (0.021 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1560.356
+Total tree length: 3.673
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.305 sec (0h:0m:0s)
+Total wall-clock time used: 0.039 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 2
+
+Creating bootstrap alignment (seed: 386217)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 52 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1335.140
+2. Current log-likelihood: -1301.488
+3. Current log-likelihood: -1301.151
+Optimal log-likelihood: -1301.150
+Gamma shape alpha: 0.681
+Parameters optimization took 3 rounds (0.022 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1301.150
+Total tree length: 2.917
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.289 sec (0h:0m:0s)
+Total wall-clock time used: 0.037 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 3
+
+Creating bootstrap alignment (seed: 386218)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1778.807
+2. Current log-likelihood: -1755.691
+3. Current log-likelihood: -1755.542
+Optimal log-likelihood: -1755.540
+Gamma shape alpha: 1.045
+Parameters optimization took 3 rounds (0.017 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1755.540
+Total tree length: 3.791
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.242 sec (0h:0m:0s)
+Total wall-clock time used: 0.033 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 4
+
+Creating bootstrap alignment (seed: 386219)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1368.961
+2. Current log-likelihood: -1339.498
+3. Current log-likelihood: -1338.349
+Optimal log-likelihood: -1338.340
+Gamma shape alpha: 0.591
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1338.340
+Total tree length: 2.600
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.320 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 5
+
+Creating bootstrap alignment (seed: 386220)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 63 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1490.611
+2. Current log-likelihood: -1468.335
+3. Current log-likelihood: -1468.258
+4. Current log-likelihood: -1468.239
+Optimal log-likelihood: -1468.238
+Gamma shape alpha: 1.151
+Parameters optimization took 4 rounds (0.030 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1468.238
+Total tree length: 3.048
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.354 sec (0h:0m:0s)
+Total wall-clock time used: 0.048 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 6
+
+Creating bootstrap alignment (seed: 386221)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1299.495
+2. Current log-likelihood: -1270.335
+3. Current log-likelihood: -1270.300
+Optimal log-likelihood: -1270.299
+Gamma shape alpha: 0.627
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1270.299
+Total tree length: 2.783
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.321 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 7
+
+Creating bootstrap alignment (seed: 386222)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1542.591
+2. Current log-likelihood: -1523.170
+3. Current log-likelihood: -1522.971
+Optimal log-likelihood: -1522.970
+Gamma shape alpha: 1.484
+Parameters optimization took 3 rounds (0.029 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1522.970
+Total tree length: 3.266
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.364 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 8
+
+Creating bootstrap alignment (seed: 386223)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1396.523
+2. Current log-likelihood: -1366.180
+3. Current log-likelihood: -1366.074
+Optimal log-likelihood: -1366.073
+Gamma shape alpha: 0.593
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1366.073
+Total tree length: 3.167
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.318 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 9
+
+Creating bootstrap alignment (seed: 386224)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1382.503
+2. Current log-likelihood: -1361.045
+3. Current log-likelihood: -1360.996
+Optimal log-likelihood: -1360.994
+Gamma shape alpha: 1.061
+Parameters optimization took 3 rounds (0.023 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1360.994
+Total tree length: 3.261
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.308 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 10
+
+Creating bootstrap alignment (seed: 386225)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1423.249
+2. Current log-likelihood: -1392.598
+3. Current log-likelihood: -1392.531
+Optimal log-likelihood: -1392.531
+Gamma shape alpha: 0.744
+Parameters optimization took 3 rounds (0.023 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1392.531
+Total tree length: 3.032
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.312 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 11
+
+Creating bootstrap alignment (seed: 386226)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1340.759
+2. Current log-likelihood: -1304.374
+3. Current log-likelihood: -1304.287
+Optimal log-likelihood: -1304.287
+Gamma shape alpha: 0.610
+Parameters optimization took 3 rounds (0.021 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1304.287
+Total tree length: 3.039
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.300 sec (0h:0m:0s)
+Total wall-clock time used: 0.038 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 12
+
+Creating bootstrap alignment (seed: 386227)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1353.702
+2. Current log-likelihood: -1329.096
+3. Current log-likelihood: -1328.962
+Optimal log-likelihood: -1328.960
+Gamma shape alpha: 0.893
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1328.960
+Total tree length: 3.048
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.330 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 13
+
+Creating bootstrap alignment (seed: 386228)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1458.987
+2. Current log-likelihood: -1433.743
+3. Current log-likelihood: -1433.669
+Optimal log-likelihood: -1433.669
+Gamma shape alpha: 0.831
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1433.669
+Total tree length: 3.342
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.322 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 14
+
+Creating bootstrap alignment (seed: 386229)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1329.483
+2. Current log-likelihood: -1298.606
+3. Current log-likelihood: -1298.391
+Optimal log-likelihood: -1298.388
+Gamma shape alpha: 0.846
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1298.388
+Total tree length: 2.400
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.364 sec (0h:0m:0s)
+Total wall-clock time used: 0.047 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 15
+
+Creating bootstrap alignment (seed: 386230)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1665.015
+2. Current log-likelihood: -1616.727
+3. Current log-likelihood: -1616.357
+Optimal log-likelihood: -1616.351
+Gamma shape alpha: 0.550
+Parameters optimization took 3 rounds (0.032 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1616.351
+Total tree length: 3.795
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.379 sec (0h:0m:0s)
+Total wall-clock time used: 0.047 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 16
+
+Creating bootstrap alignment (seed: 386231)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 61 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1533.071
+2. Current log-likelihood: -1509.868
+3. Current log-likelihood: -1509.727
+Optimal log-likelihood: -1509.727
+Gamma shape alpha: 1.008
+Parameters optimization took 3 rounds (0.022 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1509.727
+Total tree length: 3.531
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.313 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 17
+
+Creating bootstrap alignment (seed: 386232)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1680.290
+2. Current log-likelihood: -1645.558
+3. Current log-likelihood: -1645.367
+Optimal log-likelihood: -1645.366
+Gamma shape alpha: 0.913
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1645.366
+Total tree length: 4.107
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.326 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 18
+
+Creating bootstrap alignment (seed: 386233)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1454.827
+2. Current log-likelihood: -1422.465
+3. Current log-likelihood: -1422.357
+Optimal log-likelihood: -1422.355
+Gamma shape alpha: 0.908
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1422.355
+Total tree length: 2.957
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.324 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 19
+
+Creating bootstrap alignment (seed: 386234)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1281.606
+2. Current log-likelihood: -1256.961
+3. Current log-likelihood: -1256.860
+Optimal log-likelihood: -1256.859
+Gamma shape alpha: 0.912
+Parameters optimization took 3 rounds (0.030 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1256.859
+Total tree length: 2.843
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.360 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 20
+
+Creating bootstrap alignment (seed: 386235)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 63 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1280.843
+2. Current log-likelihood: -1258.841
+3. Current log-likelihood: -1258.739
+Optimal log-likelihood: -1258.738
+Gamma shape alpha: 0.630
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1258.738
+Total tree length: 2.579
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.383 sec (0h:0m:0s)
+Total wall-clock time used: 0.048 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 21
+
+Creating bootstrap alignment (seed: 386236)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1493.144
+2. Current log-likelihood: -1470.444
+3. Current log-likelihood: -1470.310
+Optimal log-likelihood: -1470.307
+Gamma shape alpha: 0.662
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1470.307
+Total tree length: 3.416
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.334 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 22
+
+Creating bootstrap alignment (seed: 386237)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1338.508
+2. Current log-likelihood: -1314.926
+3. Current log-likelihood: -1314.827
+Optimal log-likelihood: -1314.827
+Gamma shape alpha: 0.679
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1314.827
+Total tree length: 2.920
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.317 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 23
+
+Creating bootstrap alignment (seed: 386238)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1315.913
+2. Current log-likelihood: -1273.457
+3. Current log-likelihood: -1273.045
+Optimal log-likelihood: -1273.042
+Gamma shape alpha: 0.757
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1273.042
+Total tree length: 2.516
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.364 sec (0h:0m:0s)
+Total wall-clock time used: 0.047 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 24
+
+Creating bootstrap alignment (seed: 386239)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1425.218
+2. Current log-likelihood: -1392.337
+3. Current log-likelihood: -1392.296
+Optimal log-likelihood: -1392.296
+Gamma shape alpha: 0.684
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1392.296
+Total tree length: 3.244
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.318 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 25
+
+Creating bootstrap alignment (seed: 386240)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1318.982
+2. Current log-likelihood: -1295.461
+3. Current log-likelihood: -1295.415
+Optimal log-likelihood: -1295.414
+Gamma shape alpha: 1.120
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1295.414
+Total tree length: 2.670
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.328 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 26
+
+Creating bootstrap alignment (seed: 386241)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1322.415
+2. Current log-likelihood: -1296.738
+3. Current log-likelihood: -1296.606
+Optimal log-likelihood: -1296.605
+Gamma shape alpha: 0.794
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1296.605
+Total tree length: 2.720
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.376 sec (0h:0m:0s)
+Total wall-clock time used: 0.048 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 27
+
+Creating bootstrap alignment (seed: 386242)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1310.511
+2. Current log-likelihood: -1289.547
+3. Current log-likelihood: -1289.449
+Optimal log-likelihood: -1289.447
+Gamma shape alpha: 0.674
+Parameters optimization took 3 rounds (0.023 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1289.447
+Total tree length: 2.953
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.306 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 28
+
+Creating bootstrap alignment (seed: 386243)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1598.294
+2. Current log-likelihood: -1574.696
+3. Current log-likelihood: -1574.616
+Optimal log-likelihood: -1574.614
+Gamma shape alpha: 0.936
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1574.614
+Total tree length: 3.663
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.347 sec (0h:0m:0s)
+Total wall-clock time used: 0.045 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 29
+
+Creating bootstrap alignment (seed: 386244)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1263.799
+2. Current log-likelihood: -1240.255
+3. Current log-likelihood: -1240.158
+Optimal log-likelihood: -1240.158
+Gamma shape alpha: 0.775
+Parameters optimization took 3 rounds (0.029 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1240.158
+Total tree length: 2.671
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.361 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 30
+
+Creating bootstrap alignment (seed: 386245)...
+NOTE: State(s) H, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1351.287
+2. Current log-likelihood: -1319.337
+3. Current log-likelihood: -1319.048
+4. Current log-likelihood: -1319.028
+Optimal log-likelihood: -1319.021
+Gamma shape alpha: 0.587
+Parameters optimization took 4 rounds (0.041 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1319.021
+Total tree length: 3.309
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.444 sec (0h:0m:0s)
+Total wall-clock time used: 0.057 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 31
+
+Creating bootstrap alignment (seed: 386246)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1541.628
+2. Current log-likelihood: -1515.953
+3. Current log-likelihood: -1515.838
+Optimal log-likelihood: -1515.836
+Gamma shape alpha: 0.858
+Parameters optimization took 3 rounds (0.029 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1515.836
+Total tree length: 3.521
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.354 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 32
+
+Creating bootstrap alignment (seed: 386247)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 62 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1521.147
+2. Current log-likelihood: -1495.627
+3. Current log-likelihood: -1495.527
+Optimal log-likelihood: -1495.526
+Gamma shape alpha: 1.090
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1495.526
+Total tree length: 3.401
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.382 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 33
+
+Creating bootstrap alignment (seed: 386248)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1560.886
+2. Current log-likelihood: -1531.782
+3. Current log-likelihood: -1531.712
+Optimal log-likelihood: -1531.711
+Gamma shape alpha: 1.004
+Parameters optimization took 3 rounds (0.023 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1531.711
+Total tree length: 3.606
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.320 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 34
+
+Creating bootstrap alignment (seed: 386249)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1237.723
+2. Current log-likelihood: -1208.526
+3. Current log-likelihood: -1208.455
+Optimal log-likelihood: -1208.454
+Gamma shape alpha: 0.703
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1208.454
+Total tree length: 2.496
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.363 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 35
+
+Creating bootstrap alignment (seed: 386250)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 53 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1441.346
+2. Current log-likelihood: -1418.315
+3. Current log-likelihood: -1418.276
+Optimal log-likelihood: -1418.268
+Gamma shape alpha: 0.996
+Parameters optimization took 3 rounds (0.021 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1418.268
+Total tree length: 3.312
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.291 sec (0h:0m:0s)
+Total wall-clock time used: 0.036 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 36
+
+Creating bootstrap alignment (seed: 386251)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 63 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1445.330
+2. Current log-likelihood: -1431.794
+3. Current log-likelihood: -1431.681
+Optimal log-likelihood: -1431.680
+Gamma shape alpha: 0.749
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1431.680
+Total tree length: 3.228
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.359 sec (0h:0m:0s)
+Total wall-clock time used: 0.045 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 37
+
+Creating bootstrap alignment (seed: 386252)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1482.962
+2. Current log-likelihood: -1446.819
+3. Current log-likelihood: -1446.761
+Optimal log-likelihood: -1446.761
+Gamma shape alpha: 1.002
+Parameters optimization took 3 rounds (0.021 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1446.761
+Total tree length: 3.171
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.293 sec (0h:0m:0s)
+Total wall-clock time used: 0.038 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 38
+
+Creating bootstrap alignment (seed: 386253)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1282.691
+2. Current log-likelihood: -1249.482
+3. Current log-likelihood: -1249.125
+Optimal log-likelihood: -1249.123
+Gamma shape alpha: 0.584
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1249.123
+Total tree length: 3.364
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.363 sec (0h:0m:0s)
+Total wall-clock time used: 0.045 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 39
+
+Creating bootstrap alignment (seed: 386254)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1376.885
+2. Current log-likelihood: -1348.832
+3. Current log-likelihood: -1348.771
+Optimal log-likelihood: -1348.770
+Gamma shape alpha: 0.816
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1348.770
+Total tree length: 3.205
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.323 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 40
+
+Creating bootstrap alignment (seed: 386255)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1339.261
+2. Current log-likelihood: -1320.119
+3. Current log-likelihood: -1320.048
+Optimal log-likelihood: -1320.047
+Gamma shape alpha: 0.911
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1320.047
+Total tree length: 2.590
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.341 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 41
+
+Creating bootstrap alignment (seed: 386256)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 62 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1550.400
+2. Current log-likelihood: -1525.555
+3. Current log-likelihood: -1525.535
+Optimal log-likelihood: -1525.535
+Gamma shape alpha: 0.850
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1525.535
+Total tree length: 3.379
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.345 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 42
+
+Creating bootstrap alignment (seed: 386257)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1520.834
+2. Current log-likelihood: -1500.240
+3. Current log-likelihood: -1500.223
+Optimal log-likelihood: -1500.223
+Gamma shape alpha: 1.025
+Parameters optimization took 3 rounds (0.019 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1500.223
+Total tree length: 3.201
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.288 sec (0h:0m:0s)
+Total wall-clock time used: 0.036 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 43
+
+Creating bootstrap alignment (seed: 386258)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 61 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1310.352
+2. Current log-likelihood: -1275.339
+3. Current log-likelihood: -1275.283
+Optimal log-likelihood: -1275.281
+Gamma shape alpha: 0.711
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1275.281
+Total tree length: 2.938
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.340 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 44
+
+Creating bootstrap alignment (seed: 386259)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 61 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1282.490
+2. Current log-likelihood: -1261.833
+3. Current log-likelihood: -1261.694
+Optimal log-likelihood: -1261.693
+Gamma shape alpha: 0.616
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1261.693
+Total tree length: 2.722
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.357 sec (0h:0m:0s)
+Total wall-clock time used: 0.045 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 45
+
+Creating bootstrap alignment (seed: 386260)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 63 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1259.775
+2. Current log-likelihood: -1239.396
+3. Current log-likelihood: -1239.368
+Optimal log-likelihood: -1239.368
+Gamma shape alpha: 0.681
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1239.368
+Total tree length: 2.862
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.336 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 46
+
+Creating bootstrap alignment (seed: 386261)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1465.598
+2. Current log-likelihood: -1446.445
+3. Current log-likelihood: -1446.399
+Optimal log-likelihood: -1446.399
+Gamma shape alpha: 0.794
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1446.399
+Total tree length: 3.285
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.335 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 47
+
+Creating bootstrap alignment (seed: 386262)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 53 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1525.234
+2. Current log-likelihood: -1492.218
+3. Current log-likelihood: -1492.163
+Optimal log-likelihood: -1492.163
+Gamma shape alpha: 1.104
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1492.163
+Total tree length: 3.311
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.299 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 48
+
+Creating bootstrap alignment (seed: 386263)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1338.859
+2. Current log-likelihood: -1316.944
+3. Current log-likelihood: -1316.903
+Optimal log-likelihood: -1316.903
+Gamma shape alpha: 0.708
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1316.903
+Total tree length: 3.064
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.333 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 49
+
+Creating bootstrap alignment (seed: 386264)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1343.779
+2. Current log-likelihood: -1309.575
+3. Current log-likelihood: -1309.427
+Optimal log-likelihood: -1309.426
+Gamma shape alpha: 1.200
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1309.426
+Total tree length: 2.886
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.346 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 50
+
+Creating bootstrap alignment (seed: 386265)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1237.647
+2. Current log-likelihood: -1217.192
+3. Current log-likelihood: -1217.100
+Optimal log-likelihood: -1217.098
+Gamma shape alpha: 0.678
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1217.098
+Total tree length: 2.990
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.346 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 51
+
+Creating bootstrap alignment (seed: 386266)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1363.275
+2. Current log-likelihood: -1331.460
+3. Current log-likelihood: -1331.409
+Optimal log-likelihood: -1331.409
+Gamma shape alpha: 0.642
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1331.409
+Total tree length: 3.007
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.333 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 52
+
+Creating bootstrap alignment (seed: 386267)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1460.063
+2. Current log-likelihood: -1432.605
+3. Current log-likelihood: -1432.547
+Optimal log-likelihood: -1432.546
+Gamma shape alpha: 0.802
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1432.546
+Total tree length: 2.867
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.337 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 53
+
+Creating bootstrap alignment (seed: 386268)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1525.214
+2. Current log-likelihood: -1497.014
+3. Current log-likelihood: -1496.895
+Optimal log-likelihood: -1496.894
+Gamma shape alpha: 1.044
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1496.894
+Total tree length: 3.344
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.349 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 54
+
+Creating bootstrap alignment (seed: 386269)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1499.346
+2. Current log-likelihood: -1467.903
+3. Current log-likelihood: -1467.692
+Optimal log-likelihood: -1467.679
+Gamma shape alpha: 0.871
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1467.679
+Total tree length: 3.394
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.361 sec (0h:0m:0s)
+Total wall-clock time used: 0.045 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 55
+
+Creating bootstrap alignment (seed: 386270)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1431.570
+2. Current log-likelihood: -1391.647
+3. Current log-likelihood: -1391.593
+Optimal log-likelihood: -1391.592
+Gamma shape alpha: 0.679
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1391.592
+Total tree length: 3.138
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.326 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 56
+
+Creating bootstrap alignment (seed: 386271)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1369.978
+2. Current log-likelihood: -1346.418
+3. Current log-likelihood: -1346.389
+Optimal log-likelihood: -1346.389
+Gamma shape alpha: 0.945
+Parameters optimization took 3 rounds (0.022 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1346.389
+Total tree length: 2.890
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.306 sec (0h:0m:0s)
+Total wall-clock time used: 0.038 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 57
+
+Creating bootstrap alignment (seed: 386272)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1322.463
+2. Current log-likelihood: -1297.769
+3. Current log-likelihood: -1297.239
+Optimal log-likelihood: -1297.237
+Gamma shape alpha: 0.630
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1297.237
+Total tree length: 3.190
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.352 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 58
+
+Creating bootstrap alignment (seed: 386273)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 53 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1468.158
+2. Current log-likelihood: -1435.371
+3. Current log-likelihood: -1435.241
+Optimal log-likelihood: -1435.240
+Gamma shape alpha: 0.723
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1435.240
+Total tree length: 3.675
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.347 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 59
+
+Creating bootstrap alignment (seed: 386274)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1423.526
+2. Current log-likelihood: -1398.909
+3. Current log-likelihood: -1398.885
+Optimal log-likelihood: -1398.884
+Gamma shape alpha: 0.791
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1398.884
+Total tree length: 3.049
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.329 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 60
+
+Creating bootstrap alignment (seed: 386275)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1540.138
+2. Current log-likelihood: -1514.649
+3. Current log-likelihood: -1514.536
+Optimal log-likelihood: -1514.534
+Gamma shape alpha: 0.891
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1514.534
+Total tree length: 3.580
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.333 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 61
+
+Creating bootstrap alignment (seed: 386276)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 53 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1187.896
+2. Current log-likelihood: -1158.934
+3. Current log-likelihood: -1158.617
+Optimal log-likelihood: -1158.616
+Gamma shape alpha: 0.650
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1158.616
+Total tree length: 2.426
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.342 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 62
+
+Creating bootstrap alignment (seed: 386277)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1467.735
+2. Current log-likelihood: -1444.472
+3. Current log-likelihood: -1444.123
+Optimal log-likelihood: -1444.122
+Gamma shape alpha: 1.023
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1444.122
+Total tree length: 2.792
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.437 sec (0h:0m:0s)
+Total wall-clock time used: 0.055 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 63
+
+Creating bootstrap alignment (seed: 386278)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1222.394
+2. Current log-likelihood: -1192.619
+3. Current log-likelihood: -1192.581
+Optimal log-likelihood: -1192.581
+Gamma shape alpha: 0.705
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1192.581
+Total tree length: 2.816
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.341 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 64
+
+Creating bootstrap alignment (seed: 386279)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1427.514
+2. Current log-likelihood: -1409.351
+3. Current log-likelihood: -1409.312
+Optimal log-likelihood: -1409.311
+Gamma shape alpha: 0.813
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1409.311
+Total tree length: 3.042
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.334 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 65
+
+Creating bootstrap alignment (seed: 386280)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 57 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1484.912
+2. Current log-likelihood: -1463.669
+3. Current log-likelihood: -1463.639
+Optimal log-likelihood: -1463.638
+Gamma shape alpha: 0.770
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1463.638
+Total tree length: 3.102
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.330 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 66
+
+Creating bootstrap alignment (seed: 386281)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1693.831
+2. Current log-likelihood: -1665.854
+3. Current log-likelihood: -1665.676
+Optimal log-likelihood: -1665.675
+Gamma shape alpha: 0.836
+Parameters optimization took 3 rounds (0.029 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1665.675
+Total tree length: 3.743
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.370 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 67
+
+Creating bootstrap alignment (seed: 386282)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1420.914
+2. Current log-likelihood: -1393.804
+3. Current log-likelihood: -1393.744
+Optimal log-likelihood: -1393.739
+Gamma shape alpha: 0.717
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1393.739
+Total tree length: 3.145
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.345 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 68
+
+Creating bootstrap alignment (seed: 386283)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1642.538
+2. Current log-likelihood: -1614.182
+3. Current log-likelihood: -1613.931
+Optimal log-likelihood: -1613.928
+Gamma shape alpha: 1.090
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1613.928
+Total tree length: 3.859
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.331 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 69
+
+Creating bootstrap alignment (seed: 386284)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1337.116
+2. Current log-likelihood: -1301.558
+3. Current log-likelihood: -1301.390
+Optimal log-likelihood: -1301.380
+Gamma shape alpha: 0.567
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1301.380
+Total tree length: 2.761
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.375 sec (0h:0m:0s)
+Total wall-clock time used: 0.047 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 70
+
+Creating bootstrap alignment (seed: 386285)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1342.654
+2. Current log-likelihood: -1321.435
+3. Current log-likelihood: -1321.419
+Optimal log-likelihood: -1321.419
+Gamma shape alpha: 1.114
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1321.419
+Total tree length: 2.924
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.323 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 71
+
+Creating bootstrap alignment (seed: 386286)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1486.858
+2. Current log-likelihood: -1468.023
+3. Current log-likelihood: -1467.965
+Optimal log-likelihood: -1467.964
+Gamma shape alpha: 0.824
+Parameters optimization took 3 rounds (0.021 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1467.964
+Total tree length: 3.236
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.281 sec (0h:0m:0s)
+Total wall-clock time used: 0.037 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 72
+
+Creating bootstrap alignment (seed: 386287)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1631.080
+2. Current log-likelihood: -1608.764
+3. Current log-likelihood: -1608.012
+Optimal log-likelihood: -1608.001
+Gamma shape alpha: 1.145
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1608.001
+Total tree length: 3.656
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.349 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 73
+
+Creating bootstrap alignment (seed: 386288)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1266.292
+2. Current log-likelihood: -1242.428
+3. Current log-likelihood: -1242.183
+Optimal log-likelihood: -1242.179
+Gamma shape alpha: 0.633
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1242.179
+Total tree length: 2.393
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.342 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 74
+
+Creating bootstrap alignment (seed: 386289)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 61 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1364.546
+2. Current log-likelihood: -1344.527
+3. Current log-likelihood: -1344.445
+Optimal log-likelihood: -1344.444
+Gamma shape alpha: 0.721
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1344.444
+Total tree length: 2.866
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.344 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 75
+
+Creating bootstrap alignment (seed: 386290)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1434.454
+2. Current log-likelihood: -1415.315
+3. Current log-likelihood: -1415.222
+Optimal log-likelihood: -1415.214
+Gamma shape alpha: 0.794
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1415.214
+Total tree length: 3.415
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.326 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 76
+
+Creating bootstrap alignment (seed: 386291)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1376.213
+2. Current log-likelihood: -1347.239
+3. Current log-likelihood: -1347.149
+Optimal log-likelihood: -1347.147
+Gamma shape alpha: 0.726
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1347.147
+Total tree length: 3.020
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.332 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 77
+
+Creating bootstrap alignment (seed: 386292)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1231.543
+2. Current log-likelihood: -1205.167
+3. Current log-likelihood: -1205.026
+Optimal log-likelihood: -1205.025
+Gamma shape alpha: 0.604
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1205.025
+Total tree length: 3.019
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.344 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 78
+
+Creating bootstrap alignment (seed: 386293)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1487.383
+2. Current log-likelihood: -1468.137
+3. Current log-likelihood: -1466.791
+4. Current log-likelihood: -1466.431
+Optimal log-likelihood: -1466.430
+Gamma shape alpha: 0.788
+Parameters optimization took 4 rounds (0.038 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1466.430
+Total tree length: 3.605
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.512 sec (0h:0m:0s)
+Total wall-clock time used: 0.064 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 79
+
+Creating bootstrap alignment (seed: 386294)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 62 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1402.816
+2. Current log-likelihood: -1366.244
+3. Current log-likelihood: -1366.170
+Optimal log-likelihood: -1366.168
+Gamma shape alpha: 1.036
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1366.168
+Total tree length: 2.897
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.356 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 80
+
+Creating bootstrap alignment (seed: 386295)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1475.931
+2. Current log-likelihood: -1441.243
+3. Current log-likelihood: -1440.964
+Optimal log-likelihood: -1440.963
+Gamma shape alpha: 0.706
+Parameters optimization took 3 rounds (0.028 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1440.963
+Total tree length: 3.645
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.354 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 81
+
+Creating bootstrap alignment (seed: 386296)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 52 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1486.556
+2. Current log-likelihood: -1445.971
+3. Current log-likelihood: -1445.926
+Optimal log-likelihood: -1445.925
+Gamma shape alpha: 0.888
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1445.925
+Total tree length: 3.306
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.322 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 82
+
+Creating bootstrap alignment (seed: 386297)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1472.542
+2. Current log-likelihood: -1432.496
+3. Current log-likelihood: -1432.417
+Optimal log-likelihood: -1432.416
+Gamma shape alpha: 0.867
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1432.416
+Total tree length: 3.441
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.310 sec (0h:0m:0s)
+Total wall-clock time used: 0.040 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 83
+
+Creating bootstrap alignment (seed: 386298)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1232.229
+2. Current log-likelihood: -1201.576
+3. Current log-likelihood: -1201.556
+Optimal log-likelihood: -1201.556
+Gamma shape alpha: 0.754
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1201.556
+Total tree length: 2.639
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.327 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 84
+
+Creating bootstrap alignment (seed: 386299)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1396.108
+2. Current log-likelihood: -1368.591
+3. Current log-likelihood: -1368.518
+Optimal log-likelihood: -1368.518
+Gamma shape alpha: 0.784
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1368.518
+Total tree length: 2.801
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.358 sec (0h:0m:0s)
+Total wall-clock time used: 0.046 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 85
+
+Creating bootstrap alignment (seed: 386300)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1291.663
+2. Current log-likelihood: -1257.876
+3. Current log-likelihood: -1257.523
+Optimal log-likelihood: -1257.514
+Gamma shape alpha: 1.273
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1257.514
+Total tree length: 2.405
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.347 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 86
+
+Creating bootstrap alignment (seed: 386301)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1479.591
+2. Current log-likelihood: -1456.143
+3. Current log-likelihood: -1455.995
+Optimal log-likelihood: -1455.994
+Gamma shape alpha: 1.202
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1455.994
+Total tree length: 3.208
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.338 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 87
+
+Creating bootstrap alignment (seed: 386302)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1449.455
+2. Current log-likelihood: -1416.896
+3. Current log-likelihood: -1416.828
+Optimal log-likelihood: -1416.828
+Gamma shape alpha: 1.089
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1416.828
+Total tree length: 3.430
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.320 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 88
+
+Creating bootstrap alignment (seed: 386303)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 60 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1425.589
+2. Current log-likelihood: -1400.865
+3. Current log-likelihood: -1400.802
+Optimal log-likelihood: -1400.801
+Gamma shape alpha: 0.666
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1400.801
+Total tree length: 3.331
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.333 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 89
+
+Creating bootstrap alignment (seed: 386304)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 54 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1318.269
+2. Current log-likelihood: -1304.753
+3. Current log-likelihood: -1304.585
+Optimal log-likelihood: -1304.584
+Gamma shape alpha: 0.643
+Parameters optimization took 3 rounds (0.031 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1304.584
+Total tree length: 2.711
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.369 sec (0h:0m:0s)
+Total wall-clock time used: 0.047 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 90
+
+Creating bootstrap alignment (seed: 386305)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 55 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1537.035
+2. Current log-likelihood: -1511.540
+3. Current log-likelihood: -1511.455
+Optimal log-likelihood: -1511.453
+Gamma shape alpha: 0.781
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1511.453
+Total tree length: 3.453
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.323 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 91
+
+Creating bootstrap alignment (seed: 386306)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1299.537
+2. Current log-likelihood: -1277.380
+Optimal log-likelihood: -1277.376
+Gamma shape alpha: 0.897
+Parameters optimization took 2 rounds (0.019 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1277.376
+Total tree length: 2.809
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.296 sec (0h:0m:0s)
+Total wall-clock time used: 0.037 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 92
+
+Creating bootstrap alignment (seed: 386307)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 61 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1510.543
+2. Current log-likelihood: -1486.651
+3. Current log-likelihood: -1486.482
+Optimal log-likelihood: -1486.482
+Gamma shape alpha: 1.046
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1486.482
+Total tree length: 3.463
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.318 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 93
+
+Creating bootstrap alignment (seed: 386308)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 62 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1478.880
+2. Current log-likelihood: -1451.387
+3. Current log-likelihood: -1451.363
+Optimal log-likelihood: -1451.361
+Gamma shape alpha: 1.100
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1451.361
+Total tree length: 3.260
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.336 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 94
+
+Creating bootstrap alignment (seed: 386309)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 56 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1466.000
+2. Current log-likelihood: -1445.131
+3. Current log-likelihood: -1444.979
+Optimal log-likelihood: -1444.974
+Gamma shape alpha: 0.739
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1444.974
+Total tree length: 2.818
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.341 sec (0h:0m:0s)
+Total wall-clock time used: 0.043 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 95
+
+Creating bootstrap alignment (seed: 386310)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 62 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1481.883
+2. Current log-likelihood: -1452.271
+3. Current log-likelihood: -1452.137
+Optimal log-likelihood: -1452.136
+Gamma shape alpha: 0.776
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1452.136
+Total tree length: 3.279
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.355 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 96
+
+Creating bootstrap alignment (seed: 386311)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1416.134
+2. Current log-likelihood: -1388.927
+3. Current log-likelihood: -1388.878
+Optimal log-likelihood: -1388.877
+Gamma shape alpha: 0.790
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1388.877
+Total tree length: 2.988
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.329 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 97
+
+Creating bootstrap alignment (seed: 386312)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1284.348
+2. Current log-likelihood: -1256.905
+3. Current log-likelihood: -1256.716
+Optimal log-likelihood: -1256.713
+Gamma shape alpha: 0.762
+Parameters optimization took 3 rounds (0.027 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1256.713
+Total tree length: 2.386
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.345 sec (0h:0m:0s)
+Total wall-clock time used: 0.044 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 98
+
+Creating bootstrap alignment (seed: 386313)...
+NOTE: State(s) C, W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 2 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 49 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 1 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1268.671
+2. Current log-likelihood: -1230.645
+3. Current log-likelihood: -1230.501
+Optimal log-likelihood: -1230.499
+Gamma shape alpha: 0.668
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1230.499
+Total tree length: 2.683
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.327 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 99
+
+Creating bootstrap alignment (seed: 386314)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 58 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1377.696
+2. Current log-likelihood: -1362.754
+3. Current log-likelihood: -1362.667
+Optimal log-likelihood: -1362.667
+Gamma shape alpha: 0.847
+Parameters optimization took 3 rounds (0.026 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1362.667
+Total tree length: 3.257
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.334 sec (0h:0m:0s)
+Total wall-clock time used: 0.042 sec (0h:0m:0s)
+
+===> START BOOTSTRAP REPLICATE NUMBER 100
+
+Creating bootstrap alignment (seed: 386315)...
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+WARNING: 8 threads for alignment length 59 will slow down analysis
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1539.758
+2. Current log-likelihood: -1503.578
+3. Current log-likelihood: -1503.518
+Optimal log-likelihood: -1503.516
+Gamma shape alpha: 1.076
+Parameters optimization took 3 rounds (0.024 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1503.516
+Total tree length: 3.615
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.321 sec (0h:0m:0s)
+Total wall-clock time used: 0.041 sec (0h:0m:0s)
+
+===> COMPUTE CONSENSUS TREE FROM 100 BOOTSTRAP TREES
+
+Reading tree(s) file C20/split/0/iqtree/iqtree.boottrees ...
+100 tree(s) loaded (0 rooted and 100 unrooted)
+0 split(s) discarded because frequency <= -1.000
+57 splits found
+Consensus tree written to C20/split/0/iqtree/iqtree.contree
+
+===> START ANALYSIS ON THE ORIGINAL ALIGNMENT
+
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+Model LG+G+C20 is alias for LG+G+POISSON+G+FMIX{C20pi1:1:0.0559910600,C20pi2:1:0.0514824870,C20pi3:1:0.0812922124,C20pi4:1:0.0721976867,C20pi5:1:0.0556718858,C20pi6:1:0.0331003080,C20pi7:1:0.0589501763,C20pi8:1:0.0263756889,C20pi9:1:0.0307584220,C20pi10:1:0.0376701125,C20pi11:1:0.0303058290,C20pi12:1:0.0808775576,C20pi13:1:0.0263349134,C20pi14:1:0.0579101455,C20pi15:1:0.0371248064,C20pi16:1:0.0586867766,C20pi17:1:0.0561479138,C20pi18:1:0.0349810886,C20pi19:1:0.0544937394,C20pi20:1:0.0596471901}
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1430.725
+2. Current log-likelihood: -1428.322
+3. Current log-likelihood: -1428.311
+Optimal log-likelihood: -1428.311
+Gamma shape alpha: 0.829
+Parameters optimization took 3 rounds (0.025 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1428.311
+Total tree length: 3.094
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.385 sec (0h:0m:0s)
+Total wall-clock time used: 0.048 sec (0h:0m:0s)
+Reading input trees file C20/split/0/iqtree/iqtree.contree
+Log-likelihood of consensus tree: -1428.311
+
+===> ASSIGN BOOTSTRAP SUPPORTS TO THE TREE FROM ORIGINAL ALIGNMENT
+
+Reading tree C20/split/0/iqtree/iqtree.treefile ...
+unrooted tree detected
+Reading tree(s) file C20/split/0/iqtree/iqtree.boottrees ...
+100 tree(s) loaded (0 rooted and 100 unrooted)
+Rescaling split weights by 1.000
+57 splits found
+Creating bootstrap support values...
+Tree with assigned support written to C20/split/0/iqtree/iqtree.treefile
+
+Analysis results written to: 
+  IQ-TREE report:                C20/split/0/iqtree/iqtree.iqtree
+  Maximum-likelihood tree:       C20/split/0/iqtree/iqtree.treefile
+  Screen log file:               C20/split/0/iqtree/iqtree.log
+
+Total CPU time for bootstrap: 35.555 seconds.
+Total wall-clock time for bootstrap: 4.520 seconds.
+
+Non-parametric bootstrap results written to:
+  Bootstrap trees:          C20/split/0/iqtree/iqtree.boottrees
+  Consensus tree:           C20/split/0/iqtree/iqtree.contree
+
+Date and Time: Wed Jun 21 11:34:37 2023

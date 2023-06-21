@@ -27,7 +27,7 @@ NW_TOPOLOGY = 'nw_topology'
 MCMCTREE = 'mcmctree'
 REORDER_NODE = File.join(DIR, 'reorder_node.rb')
 FROM_BS_TO_HESSIAN = File.join(DIR, 'from_bs_to_hessian.R')
-FIGTREE2NWK = File.join(LIB_DIR, 'figtree2tree.sh')
+FIGTREE2NWK = File.expand_path(File.join(LIB_DIR, 'figtree2tree.sh'))
 
 
 ############################################################
@@ -46,7 +46,7 @@ def processbar_for_bootstrapping(file:, b:)
   thr = Thread.new do |i|
     count = 0
     while true do
-      next if not File.exists?(file)
+      next if not File.exist?(file)
       new_count = `wc -l #{file} | awk '{print $1}'`.chomp.to_i
       sleep(0.2)
       if new_count != count
@@ -70,20 +70,20 @@ end
 
 def create_inBV(mltree_file:, mcmctree_outdir:, inBV_file:, iqtree_outdir:)
   no_species = `#{NW_STATS} #{mltree_file} | grep '^#leaves:' | awk '{print $2}'`.chomp.to_i  
-  `echo -e "\n#{no_species}\n" >#{inBV_file}`
+  `bash -c "echo -e '\n#{no_species}\n' " >#{inBV_file}`
 
   `#{NW_TOPOLOGY} -bI #{mltree_file} >> #{inBV_file}`
-  `echo -e "\n" >> #{inBV_file}`
+  `echo >> #{inBV_file}`
 
   `cat #{iqtree_outdir}/ml.bls >> #{inBV_file}`
-  `echo -e "\n" >> #{inBV_file}`
+  `echo >> #{inBV_file}`
 
   gradient = [%w[0] * (2*no_species-3)].join(' ') # no. of branches equals 2n-3 where n is the no. of species
   `echo #{gradient} >> #{inBV_file}`
-  `echo -e "\n" >> #{inBV_file}`
+  `echo >> #{inBV_file}`
 
   `echo Hessian >> #{inBV_file}`
-  `echo -e "\n" >> #{inBV_file}`
+  `echo >> #{inBV_file}`
   `cat #{iqtree_outdir}/hessian >> #{inBV_file}`
 end
 
@@ -274,7 +274,7 @@ if is_run_mcmctree
 
   if $? == 0
     Thread.kill(thr) and puts
-    `#{FIGTREE2NWK} -i FigTree.tre > figtree.nwk`
+    `bash #{FIGTREE2NWK} -i FigTree.tre > figtree.nwk`
     puts "Done!" if $? == 0
   end
 end

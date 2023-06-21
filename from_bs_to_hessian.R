@@ -15,9 +15,9 @@ outfile = args[2]
 ############################################
 m <- as.matrix(read.table(infile))
 
-m <- m + diag(ncol(m))*1e-6
-
 c <- cov(m)
+
+c <- c + diag(ncol(m))*1e-6
 
 h <- -solve(c)
 

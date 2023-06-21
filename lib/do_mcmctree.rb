@@ -152,7 +152,7 @@ def prepare_paml_ctl(ctl_file, outdir, h, other_args={})
     lines << sprintf_argu_line(i, other_args[i], 14)
   end
 
-  if Dir.exists?(outdir)
+  if Dir.exist?(outdir)
     FileUtils.cp(ctl_file, outdir)
     ctl_file = File.join(outdir, File.basename(ctl_file)) # note the ctl is changed!
   end
@@ -165,7 +165,7 @@ end
 
 def run_codeml(outdir, seqtype, ndata, alpha, ncatG, cpu)
   Dir.chdir(outdir)
-  `rm in.BV` if File.exists?('in.BV')
+  `rm in.BV` if File.exist?('in.BV')
 
   Parallel.map(1..ndata, in_processes: cpu) do |i|
     Dir.chdir(outdir)

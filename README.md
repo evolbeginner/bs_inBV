@@ -54,5 +54,7 @@ This product also employs several other computational tools. Please ensure that 
 3. In case of problems due to invertible variance-covariance matrix of the branch lengths, try either increasing bootstrap no. or avoiding too closely related species.
 
 # How to cite
+Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo bioRxiv 2023.06.18.545440; doi: https://doi.org/10.1101/2023.06.18.545440.
+
 You may also need to cite corresponding papers for the use of PAML, IQ-Tree, and Newick_Utilities.
 

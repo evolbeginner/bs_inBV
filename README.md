@@ -52,6 +52,7 @@ This product also employs several other computational tools. Please ensure that 
 1. With `--run_mcmctree`, MCMCTree will be run directly after generating in.BV. In case you want only the file in.BV based on your specified model say LG+G+C60, please do not use `--run_mcmctree`.
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
 3. In case of problems due to invertible variance-covariance matrix of the branch lengths, try either increasing bootstrap no. or avoiding too closely related species.
+4. For more details, please see #Note S4 and Figs. S9-S10# in the original refenrence (see below).
 
 # How to cite
 Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo bioRxiv 2023.06.18.545440; doi: https://doi.org/10.1101/2023.06.18.545440.

@@ -1,3 +1,5 @@
+#! /usr/bin/env ruby
+
 require 'find'
 
 
@@ -77,5 +79,3 @@ def get_file_path(file)
   path = File.symlink?(file) ? File.readlink(file) : file
   return(path)
 end
-
-

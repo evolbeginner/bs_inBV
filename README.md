@@ -53,6 +53,7 @@ This product also employs several other computational tools. Please ensure that 
 2. Without `--pmsf` IQ-Tree is much slower because it is the traditional Cxx model that will be applied in IQ-Tree.
 3. In case of problems due to invertible variance-covariance matrix of the branch lengths, try either increasing bootstrap no. or avoiding too closely related species.
 4. For more details, please see **Note S4 and Figs. S9-S10** in the original refenrence (see below).
+5. As suggested by Sandra Alvarez [link](https://github.com/evolbeginner/bs_inBV/issues/1), **installation of some necessary packages are not clearly stated in the current version of README.md**. So users should be very careful when using v1.0 of the present tool.
 
 # How to cite
 Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo bioRxiv 2023.06.18.545440; doi: https://doi.org/10.1101/2023.06.18.545440.

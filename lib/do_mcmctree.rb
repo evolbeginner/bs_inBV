@@ -28,7 +28,7 @@ require 'parallel'
 require 'time'
 require 'colorize'
 
-require 'Dir'
+require 'Dir.rb'
 
 
 #################################################################
@@ -37,7 +37,7 @@ $PWD = Dir.getwd
 DIR = File.dirname(__FILE__)
 FIGTREE2NWK = File.join(DIR, "figtree2tree.sh")
 
-PAML_DIR = File.expand_path("~/software/phylo/paml/")
+PAML_DIR = File.expand_path("~/PAML/bin/")
 MCMCTREE_CTL = File.join(PAML_DIR, 'mcmctree.ctl')
 CODEML_CTL = File.join(PAML_DIR, 'codeml.ctl')
 MCMCTREE = "mcmctree"

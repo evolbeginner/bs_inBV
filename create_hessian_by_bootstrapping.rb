@@ -9,9 +9,11 @@ require 'tmpdir'
 require 'find'
 require 'colorize'
 
-require_relative 'lib/Dir'
-require_relative 'lib/processbar'
-require_relative 'lib/do_mcmctree.rb'
+$LOAD_PATH << './lib'
+
+require 'Dir.rb'
+require 'processbar.rb'
+require 'do_mcmctree.rb'
 
 
 ############################################################
@@ -21,7 +23,7 @@ RSCRIPT='Rscript'
 DIR = File.dirname(__FILE__)
 LIB_DIR = File.join(DIR, 'lib')
 
-IQTREE = 'iqtree'
+IQTREE = 'iqtree2'
 NW_STATS = 'nw_stats'
 NW_TOPOLOGY = 'nw_topology'
 MCMCTREE = 'mcmctree'
@@ -278,5 +280,3 @@ if is_run_mcmctree
     puts "Done!" if $? == 0
   end
 end
-
-

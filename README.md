@@ -104,6 +104,9 @@ Once the command above finishes, you will see the following output files:
 4. The tool should **in theory work for any substitution models** but would be **in practice most useful for complex models** as these are not included in `MCMCtree`. It also works for nucleotides in which case however you may need to specify seqtype=1 in the file `mcmctree.ctl`.
 5. For more details, please see **Note S4 and Figs. S9-S10** in the original reference (see below).
 
+## Acknowledgement
+I am particularly grateful for Sandra Álvarez-Carretero and Edmund Moody from University of Bristol for their help in testing the scripts and providing feedback and suggestions. Particularly, Sandra has contributed to some coding and editing `Readme.md` to make the tool much more user-friendly.
+
 ## How to cite
 
 Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo bioRxiv 2023.06.18.545440; doi: https://doi.org/10.1101/2023.06.18.545440.

@@ -2,6 +2,16 @@
 
 
 ############################################################
+# for the 1st ever run
+file_1st_run = File.join(File.dirname(__FILE__), 'lib', '1st_run')
+if not File.exist?(file_1st_run)
+  STDOUT.puts "Welcome to use bs_inBV. This is your 1st run. Pls run check_dependency.rb first to ensure all dependencies are installed."
+  `touch #{file_1st_run}`
+  exit
+end
+
+
+############################################################
 require 'getoptlong'
 require 'parallel'
 require 'fileutils'

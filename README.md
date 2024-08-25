@@ -105,7 +105,7 @@ Once the command above finishes, you will see the following output files:
 5. For more details, please see **Note S4 and Figs. S9-S10** in the original reference (see below).
 
 ## Acknowledgement
-I am particularly grateful for Sandra Álvarez-Carretero and Edmund Moody from University of Bristol for their help in testing the scripts and providing feedback and suggestions. Particularly, Sandra has contributed to some coding and editing `Readme.md` to make the tool much more user-friendly.
+I am particularly grateful for Sandra Álvarez-Carretero and Edmund Moody from University of Bristol for their help in testing the scripts and providing feedback and suggestions. Particularly, Sandra has contributed to some coding and editing `Readme.md` to make the tool much more user-friendly (see [their work](https://www.nature.com/articles/s41559-024-02461-1) for more details).
 
 ## How to cite
 

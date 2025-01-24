@@ -109,7 +109,7 @@ I am particularly grateful for Sandra Álvarez-Carretero and Edmund Moody from U
 
 ## How to cite
 
-Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo bioRxiv 2023.06.18.545440; doi: https://doi.org/10.1101/2023.06.18.545440.
+Dating the bacterial tree of life based on ancient symbiosis Sishuo Wang, Haiwei Luo Syst. Biol. 2025 [https://doi.org/10.1093/sysbio/syae071](https://doi.org/10.1093/sysbio/syae071)
 
 You may also need to cite corresponding papers for the use of `PAML`, `IQ-TREE`, `Newick Utilities`, and `BioRuby`.
 

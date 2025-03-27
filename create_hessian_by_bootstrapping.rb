@@ -2,16 +2,6 @@
 
 
 ############################################################
-# for the 1st ever run
-file_1st_run = File.join(File.dirname(__FILE__), 'lib', '1st_run')
-if not File.exist?(file_1st_run)
-  STDOUT.puts "Welcome to use bs_inBV. This is your 1st run. Pls run check_dependency.rb first to ensure all dependencies are installed."
-  `touch #{file_1st_run}`
-  exit
-end
-
-
-############################################################
 require 'getoptlong'
 require 'parallel'
 require 'fileutils'
@@ -19,47 +9,32 @@ require 'tmpdir'
 require 'find'
 require 'colorize'
 
-
-begin
-  require_relative 'lib/Dir.rb'
-  require_relative 'lib/processbar.rb'
-  require_relative 'lib/do_mcmctree.rb2'
-rescue LoadError => e
-  $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
-  require 'Dir.rb'
-  require 'processbar.rb'
-  require 'do_mcmctree.rb'
-end
+require_relative 'lib/Dir'
+require_relative 'lib/processbar'
+require_relative 'lib/do_mcmctree.rb'
 
 
 ############################################################
-old_verbose = $VERBOSE
-
-# suppress warning msg due to duplicate definition of constants in the present script and those from /lib
-$VERBOSE = nil 
-
-# CONSTANT for paths/tools
+#RSCRIPT="/usr/bin/Rscript" # otherwise cannot work w/ cl007
 RSCRIPT='Rscript'
 
+$VERBOSE = nil
 DIR = File.dirname(__FILE__)
-LIB_DIR = File.join(DIR, 'lib')
+$VERBOSE = true
+LIB_DIR ||= File.join(DIR, 'lib')
 
-IQTREE = system("which iqtree2 2>/dev/null") ? "iqtree2" : "iqtree"
+IQTREE = 'iqtree'
 NW_STATS = 'nw_stats'
 NW_TOPOLOGY = 'nw_topology'
-MCMCTREE = 'mcmctree'
+MCMCTREE ||= 'mcmctree'
 REORDER_NODE = File.join(DIR, 'reorder_node.rb')
 FROM_BS_TO_HESSIAN = File.join(DIR, 'from_bs_to_hessian.R')
-FIGTREE2NWK = File.expand_path(File.join(LIB_DIR, 'figtree2tree.sh'))
-
-$VERBOSE = old_verbose
+FIGTREE2NWK ||= File.expand_path(File.join(LIB_DIR, 'figtree2tree.sh'))
 
 
 ############################################################
 def help()
-  STDERR.puts
-  STDERR.puts "Help message".colorize(:red)
-  STDERR.puts "see for more details: https://github.com/evolbeginner/bs_inBV/"
+  STDERR.puts "help message"
   exit 1
 end
 
@@ -69,13 +44,20 @@ def make_argu(argu, value)
 end
 
 
+def parse_pmsf(model_argu)
+  argu = model_argu.split('+').reject{|i|i=~/pmsf/i}.join('+')
+  is_pmsf = model_argu =~ /pmsf/i ? true : false
+  return([argu, is_pmsf])
+end
+
+
 def processbar_for_bootstrapping(file:, b:)
   thr = Thread.new do |i|
     count = 0
     while true do
       next if not File.exist?(file)
       new_count = `wc -l #{file} | awk '{print $1}'`.chomp.to_i
-      sleep(0.01)
+      sleep(0.2)
       if new_count != count
         count = new_count
         processbar(count, b)
@@ -153,7 +135,7 @@ bootstrap = 1000
 bootstrap_argu = "-b #{bootstrap}"
 te_argu = nil
 is_pmsf = false
-add_argu = nil
+add_argu = '-mwopt'
 calib_tree_file = nil
 ref_tree_file = nil
 
@@ -164,9 +146,7 @@ is_run_mcmctree = false
 
 
 ############################################################
-if ARGV.empty?
-  help()
-end
+ARGV_COPY = Marshal.load(Marshal.dump(ARGV))
 
 opts = GetoptLong.new(
   ['--mcmctree_indir', GetoptLong::REQUIRED_ARGUMENT],
@@ -183,62 +163,60 @@ opts = GetoptLong.new(
   ['--cpu', GetoptLong::REQUIRED_ARGUMENT],
   ['--run_mcmctree', GetoptLong::NO_ARGUMENT],
   ['--no_mcmctree', GetoptLong::NO_ARGUMENT],
-  ['-h', GetoptLong::NO_ARGUMENT],
   ['--add_cmd', '--add_argu', GetoptLong::REQUIRED_ARGUMENT],
+  ['--no_mwopt', GetoptLong::NO_ARGUMENT],
 )
 
-begin
-  opts.each do |opt, value|
-    case opt
-      when '--mcmctree_indir'
-        mcmctree_indir = value
-      when '--mcmctree_ctl'
-        mcmctree_ctl_file = value
-      when '--ali'
-        ali_file = value
-      when '--ref', '--ref_tree_file'
-        ref_tree_file = value
-        te_argu = make_argu('-te', value)
-      when '-m'
-        model_argu = make_argu('-m', value)
-      when '-b'
-        bootstrap = value.to_i
-        bootstrap_argu = make_argu('-b', value)
-      when '--te'
-        te_argu = make_argu('-te', value)
-      when '--pmsf'
-        is_pmsf = true
-      when '--calib_tree', '--calibrated_tree'
-        calib_tree_file = value
-      when '--outdir'
-        outdir = value
-      when '--force'
-        is_force = true
-      when '--cpu'
-        cpu = value.to_i
-      when '--run_mcmctree'
-        is_run_mcmctree = true
-      when '--no_mcmctree'
-        is_run_mcmctree = false
-      when '-h'
-        help()
-      when '--add_cmd', '--add_argu'
-        add_argu = value
-    end
+opts.each do |opt, value|
+  case opt
+    when '--mcmctree_indir'
+      mcmctree_indir = value
+    when '--mcmctree_ctl'
+      mcmctree_ctl_file = value
+    when '--ali'
+      ali_file = value
+    when '--ref', '--ref_tree_file'
+      ref_tree_file = value
+      te_argu = make_argu('-te', value)
+    when '-m'
+      model_argu = make_argu('-m', value)
+      model_argu, is_pmsf = parse_pmsf(model_argu)
+    when '-b'
+      bootstrap = value.to_i
+      bootstrap_argu = make_argu('-b', value)
+    when '--te'
+      te_argu = make_argu('-te', value)
+    when '--pmsf'
+      is_pmsf = true
+    when '--calib_tree', '--calibrated_tree'
+      calib_tree_file = value
+    when '--outdir'
+      outdir = value
+    when '--force'
+      is_force = true
+    when '--cpu'
+      cpu = value.to_i
+    when '--run_mcmctree'
+      is_run_mcmctree = true
+    when '-h'
+      help()
+    when '--no_mcmctree'
+      is_run_mcmctree = false
+    when '--add_cmd', '--add_argu'
+      add_argu = value
+    when '--no_mwopt'
+      add_argu.sub!('-mwopt', '')
   end
-rescue GetoptLong::InvalidOption => e
-  puts e
-  help()
 end
 
-
-unless is_run_mcmctree
-  STDOUT.puts "--run_mcmctree not specified or --no_mcmctree specified, so MCMCtree won't be run".colorize(:blue)
-end
 
 
 ############################################################
 mkdir_with_force(outdir, is_force)
+
+cmd_out_fh = File.open(File.join(outdir, 'cmd'), 'w')
+cmd_out_fh.puts [__FILE__, ARGV_COPY].flatten.join(" ")
+cmd_out_fh.close
 
 ali2lines = split_ali_file(ali_file)
 
@@ -250,15 +228,27 @@ STDERR.puts "CPU:\t#{cpu}".colorize(:red)
 
 
 ############################################################
-ali2lines.each_pair do |count, lines|
+ali2lines.to_a.reverse.each do |count, lines|
   outdir_split1 = File.join(outdir_split, count.to_s)
   mkdir_with_force(outdir_split1)
   ali_file1 = File.join(outdir_split1, 'combined.phy')
   out_fh = File.open(ali_file1, 'w')
-  lines.each do |line|
+
+  out_fh_all_gap_seq = File.open(File.join(outdir_split1, 'all_gap_seq.list'), 'w')
+  lines.each_with_index do |line, index|
+    #num_sites = line.split(/\s+/)[1] if index == 0
+    line =~ /^(\S+)(\s+)(\S+)$/
+    seq_name = $1; space = $2; seq = $3
+    if seq =~ /^[-]+$/
+      out_fh_all_gap_seq.puts [seq_name].join("\t")
+      k = 1
+      seq.sub!(/-{#{k}}/, 'A'*k)
+      line = seq_name + space + seq
+    end
     out_fh.puts line
   end
   out_fh.close
+  out_fh_all_gap_seq.close
 
   iqtree_outdir = File.join(outdir_split1, 'iqtree')
   mcmctree_outdir = File.join(outdir_split1, 'mcmctree')
@@ -320,6 +310,7 @@ if is_run_mcmctree
   if $? == 0
     Thread.kill(thr) and puts
     `bash #{FIGTREE2NWK} -i FigTree.tre > figtree.nwk`
+    `grep rategram out* >/dev/null && grep -A1 rategram out* | tail -1 > rate.tre`
     puts "Done!" if $? == 0
   end
 end

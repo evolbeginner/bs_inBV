@@ -22,5 +22,3 @@ c <- c + diag(ncol(m))*1e-6
 h <- -solve(c)
 
 write.table(h, file=outfile, col.names=FALSE, row.names=F)
-
-

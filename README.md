@@ -165,7 +165,7 @@ I am particularly grateful to Sandra Álvarez-Carretero and Edmund Moody (Univer
 
 ## How to cite
 
-Wang, Sishuo, and Haiwei Luo. "Dating the bacterial tree of life based on ancient symbiosis." Systematic Biology (2025): syae071.
+Wang, Sishuo, and Haiwei Luo. "Dating the bacterial tree of life based on ancient symbiosis." Systematic Biology (2025): 4, 639-655. ([link](https://academic.oup.com/sysbio/article/74/4/639/7976854?login=true))
 
 Please also cite the relevant publications for `PAML`, `IQ-TREE`, `Newick Utilities`, and `BioRuby`.
 

@@ -1,0 +1,87 @@
+IQ-TREE multicore version 2.2.2.6 COVID-edition for Linux 64-bit built May 27 2023
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    cuhk-mic (AVX512, FMA3, 376 GB RAM)
+Command: iqtree -redo -s C20/split/0/combined.phy -pre C20/split/0/iqtree/guide -T 8 -quiet -m LG4M+G -te ref.tre
+Seed:    231843 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Jun 21 11:50:43 2023
+Kernel:  AVX+FMA - 8 threads (72 CPU cores detected)
+
+Reading alignment file C20/split/0/combined.phy ... Phylip format detected
+Alignment most likely contains protein sequences
+Constructing alignment: done in 0.000580072 secs
+Alignment has 30 sequences with 100 columns, 90 distinct patterns
+59 parsimony-informative, 15 singleton sites, 26 constant sites
+     Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 2.40803e-05 secs
+   1  t3     0.00%    passed     99.98%
+   2  t24    0.00%    passed     98.60%
+   3  t22    0.00%    passed     99.90%
+   4  t1     0.00%    passed     99.99%
+   5  t7     0.00%    passed     99.99%
+   6  t17    0.00%    passed     99.99%
+   7  t18    0.00%    passed     99.97%
+   8  t21    0.00%    passed     99.88%
+   9  t19    0.00%    passed     91.41%
+  10  t16    0.00%    passed     98.57%
+  11  t15    0.00%    passed     99.53%
+  12  t5     0.00%    passed     99.97%
+  13  t8     0.00%    passed    100.00%
+  14  t23    0.00%    passed     99.99%
+  15  t14    0.00%    passed     99.99%
+  16  t9     0.00%    passed     99.90%
+  17  t27    0.00%    passed    100.00%
+  18  t29    0.00%    passed     97.76%
+  19  t20    0.00%    passed     99.99%
+  20  t10    0.00%    passed     99.83%
+  21  t28    0.00%    passed     99.87%
+  22  t30    0.00%    passed     98.97%
+  23  t12    0.00%    passed     99.99%
+  24  t13    0.00%    passed    100.00%
+  25  t6     0.00%    passed     99.73%
+  26  t25    0.00%    passed     99.93%
+  27  t11    0.00%    passed     99.72%
+  28  t2     0.00%    passed     99.98%
+  29  t4     0.00%    passed     98.26%
+  30  t26    0.00%    passed    100.00%
+****  TOTAL    0.00%  0 sequences failed composition chi2 test (p-value<5%; df=18)
+NOTE: t7 is identical to t1 but kept for subsequent analysis
+Checking for duplicate sequences: done in 0.000293016 secs
+Identifying sites to remove: done in 0.000203133 secs
+NOTE: 1 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: t17 (identical to t1) is ignored but added at the end
+Alignment was printed to C20/split/0/iqtree/guide.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to C20/split/0/iqtree/guide.uniqueseq.phy
+NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
+NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
+Reading input tree file ref.tre ...
+Model LG4M+G is alias for MIX{LG4M1,LG4M2,LG4M3,LG4M4}*G4+G
+NOTE: both +G and *G were specified, continue with *G
+
+NOTE: 2 MB RAM (0 GB) is required!
+WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -1670.496
+2. Current log-likelihood: -1666.544
+3. Current log-likelihood: -1666.529
+Optimal log-likelihood: -1666.529
+Gamma shape alpha: 1.222
+Parameters optimization took 3 rounds (0.020 sec)
+Wrote distance file to... 
+BEST SCORE FOUND : -1666.529
+Total tree length: 3.570
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
+Total CPU time used: 0.266 sec (0h:0m:0s)
+Total wall-clock time used: 0.033 sec (0h:0m:0s)
+
+Analysis results written to: 
+  IQ-TREE report:                C20/split/0/iqtree/guide.iqtree
+  Maximum-likelihood tree:       C20/split/0/iqtree/guide.treefile
+  Screen log file:               C20/split/0/iqtree/guide.log
+
+Date and Time: Wed Jun 21 11:50:43 2023

@@ -148,6 +148,11 @@ end
 
 
 ############################################################
+def get_seqlen_from_phylip(ali_file1)
+  File.open(ali_file1) { |f| f.readline.split[1].to_i }
+end
+
+
 def determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
 
   if is_best_fit
@@ -184,6 +189,21 @@ def setup_split_dirs(outdir_split, count, lines)
 end
 
 
+def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file)
+  model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
+  seqlen = get_seqlen_from_phylip(ali_file1)
+  Parallel.map(1..bootstrap, in_threads: cpu) do |c|
+    param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
+    mkdir_with_force(param_bs_outdir, true)
+    `
+      #{IQTREE} --alisim #{param_bs_outdir}/simulated_MSA -t #{mltree_file} -m #{model_best} --length #{seqlen}
+      #{IQTREE} -redo -s #{param_bs_outdir}/simulated_MSA.phy -pre #{param_bs_outdir}/iqtree -nt 1 -quiet #{model_argu_new} #{te_argu} #{add_argu}
+    ` or raise "IQ-TREE failed at bootstrap #{c}"
+    system("cat #{iqtree_outdir}/param_bs/*/iqtree.treefile > #{boottree_file}")
+  end
+end
+
+
 ############################################################
 # using finite diff. by specifying -flmix
 # given up already
@@ -191,7 +211,6 @@ end
 def generate_bl_outdir(iqtree_outdir, boottree_file, ref_tree_file, ali_file1, model_argu, add_argu)
   bl_outdir = File.join(iqtree_outdir, 'bl_outdir')
   `#{NW_TOPOLOGY} -Ib #{boottree_file} | ruby #{REORDER_NODE} -i - --ref #{ref_tree_file} --bl_outdir #{bl_outdir} --force`
-  p "#{NW_TOPOLOGY} -Ib #{boottree_file} | ruby #{REORDER_NODE} -i - --ref #{ref_tree_file} --bl_outdir #{bl_outdir} --force"
   bl_sub_outdirs = Dir.glob(File.join(bl_outdir, '*'))
   Parallel.each(bl_sub_outdirs, in_threads: cpu) do |bl_sub_outdir|
     bl_outdir2s = Array.new
@@ -236,6 +255,7 @@ is_force = false
 cpu = 1
 is_run_mcmctree = false
 is_best_fit = false
+is_param_bs = false
 
 
 ############################################################
@@ -259,6 +279,7 @@ opts = GetoptLong.new(
   ['--add_cmd', '--add_argu', GetoptLong::REQUIRED_ARGUMENT],
   ['--no_mwopt', GetoptLong::NO_ARGUMENT],
   ['--best_fit', '--best-fit', GetoptLong::NO_ARGUMENT],
+  ['--param_bs', '--param_bootstrap', GetoptLong::NO_ARGUMENT],
 )
 
 opts.each do |opt, value|
@@ -302,6 +323,8 @@ opts.each do |opt, value|
       add_argu.sub!('-mwopt', '')
     when '--best_fit', '--best-fit'
       is_best_fit = true
+    when '--param_bs', '--param_bootstrap'
+      is_param_bs = true
   end
 end
 
@@ -335,15 +358,20 @@ ali2lines.to_a.reverse.each do |count, lines|
   if is_pmsf
     `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/guide -nt #{cpu} -quiet -m LG4M+G #{te_argu} #{add_argu}`
     add_argu = [add_argu, "-ft #{iqtree_outdir}/guide.treefile"].join(' ')
-    #`#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{bootstrap_argu} #{te_argu} #{add_argu} -ft #{iqtree_outdir}/guide.treefile`
   end
 
   model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
-  #model_argu_new = model_argu
 
   STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/
 
-  `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{bootstrap_argu} #{te_argu} #{add_argu}`
+  if not is_param_bs
+    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{te_argu} #{add_argu} #{bootstrap_argu}`
+  else
+    # generate the ML tree
+    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{te_argu} #{add_argu}`
+    do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file)
+  end
+
   if File.read(File.join(iqtree_outdir, "iqtree.log")).include?("ERROR: No mixture model was specified!")
     STDERR.puts "pmsf is used for seemingly non-mixture model #{model_argu}. Exiting ......".colorize(:blue)
     exit

@@ -168,5 +168,4 @@ I am particularly grateful to Sandra Álvarez-Carretero and Edmund Moody (Univer
 Wang, Sishuo, and Haiwei Luo. "Dating the bacterial tree of life based on ancient symbiosis." Systematic Biology (2025): syae071.
 
 Please also cite the relevant publications for `PAML`, `IQ-TREE`, `Newick Utilities`, and `BioRuby`.
-```
 

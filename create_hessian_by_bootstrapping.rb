@@ -375,12 +375,13 @@ mkdir_with_force(mcmctree_outdir)
 FileUtils.cp(ali_file, File.join(mcmctree_outdir,'combined.phy'))
 `cp #{calib_tree_file} #{mcmctree_outdir}/species.trees`
 
-prepare_paml_ctl(mcmctree_ctl_file, mcmctree_outdir, {'seqfile'=>'combined.phy', 'treefile'=>'species.trees'})
-
-
-
 ############################################################
 # optional
+
+if ! mcmctree_ctl_file.nil?
+  prepare_paml_ctl(mcmctree_ctl_file, mcmctree_outdir, {'seqfile'=>'combined.phy', 'treefile'=>'species.trees'})
+end
+
 if is_run_mcmctree
   STDOUT.puts "Running MCMCtree ......"
   Dir.chdir(mcmctree_outdir)

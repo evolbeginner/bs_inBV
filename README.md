@@ -67,16 +67,18 @@ At the time of writing, `bs_inBV` has pre-defined some paths an aliases to execu
   ```
 
   > Options:
-  >
+  > Required
   > * `--ali`: path to alignment file.
   > * `--calibrated_tree`: path to input calibrated tree file that will be used by `MCMCtree`.
   > * `--outdir`: path to the output directory.
+  > Optional
   > * `--force`: tells the program to overwrite the output files, if any.
   > * `-b`: number of bootstraps that `IQ-TREE` will run. Please note that only traditional bootstrapping is allowed as the UFB approach implemented in `IQ-TREE` cannot be used when using a fixed tree topology (which is required by `MCMCtree`).
   > * `--cpu`: number of cores that will be used by `IQ-TREE`.
   > * `-m`: amino acid substitution model that `IQ-TREE` will use for branch lengths inference.
-  > * `--mcmctree_ctl`: path to the control file that will execute `MCMCtree`. Please make sure that this control file has `usedata = 2 in.BV` if you want to run `MCMCtree` after `bs_inBV` outputs the `in.BV` file (enable this feature by adding option `--run_mcmctree`).
   > * `--pmsf`: use the PMSF approximation
+  > * `--best_fit` or `--best-fit`: use the best-fitting substitution model when estimating the branch lengths for bootstrapped trees; theoretically speaking, this generates the bootstrapped Hessian that matches the setting of MCMCtree's approiximate likelihood approach where the substitution model is fixed during divergence time estimation.
+  > * `--mcmctree_ctl`: path to the control file that will execute `MCMCtree`. Please make sure that this control file has `usedata = 2 in.BV` if you want to run `MCMCtree` after `bs_inBV` outputs the `in.BV` file (enable this feature by adding option `--run_mcmctree`).
 
 ### Example
 

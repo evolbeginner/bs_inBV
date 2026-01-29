@@ -47,7 +47,7 @@ The following external programs must be installed and accessible:
   Installation instructions are available on the [IQ-TREE website](http://www.iqtree.org/#download).
 
 - [`newick-utils`](https://github.com/tjunier/newick_utils)  
-  If compiling from source leads to errors, download the pre-compiled binaries of Newick Utilities v1.6 from the [link](https://web.archive.org/web/20210409163921/http://cegg.unige.ch/pub/newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz) or use bioconda.
+  If compiling from source leads to errors, download the [pre-compiled binaries of Newick Utilities v1.6](https://web.archive.org/web/20210409163921/http://cegg.unige.ch/pub/newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz) or use bioconda.
 
 - [`R`](https://cran.r-project.org/)  
   Ensure that the `MASS` package is installed. This is required by `reorder_node.rb`.

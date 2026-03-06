@@ -142,8 +142,10 @@ def determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, t
     # no bootstrap
     `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu}`
     # best-fitting model
+    #p "ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1"
     model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
-    model_argu_new = ['-m', model_best].join(' ')
+    #p model_best; exit
+    model_argu_new = ['-m', "'" + model_best + "'"].join(' ')
   else
     model_argu_new = model_argu
   end
@@ -395,6 +397,7 @@ if ! mcmctree_ctl_file.nil?
 end
 
 if is_run_mcmctree
+  STDOUT.puts
   STDOUT.puts "Running MCMCtree ......"
   Dir.chdir(mcmctree_outdir)
 

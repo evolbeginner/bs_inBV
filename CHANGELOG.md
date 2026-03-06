@@ -1,3 +1,6 @@
+### v1.3.3 — 2026-03-06
+- **Fixed:** `--best_fit`
+
 ### v1.3.2 — 2026-03-06
 - **Improved:** progressbar improved
 - **Fixed:** `--best_fit` for IQ-Tree v2

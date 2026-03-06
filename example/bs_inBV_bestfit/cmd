@@ -1,0 +1,1 @@
+/mnt/hd1/home/sishuo/lab-tools/bs_inBV/latest/create_hessian_by_bootstrapping.rb --ali combined.phy --calibrated_tree species.trees --outdir bs_inBV_bestfit --force --ref ref.tre -b 5 --cpu 10 -m LG+C10+G --mcmctree_ctl mcmctree/combined/mcmctree.ctl --best_fit --run_mcmctree

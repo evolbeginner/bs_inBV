@@ -37,17 +37,24 @@ abort("ERROR: file not found: #{log_file}")    unless File.exist?(log_file)
 abort("ERROR: file not found: #{iqtree_file}") unless File.exist?(iqtree_file)
 
 ######################################################
-# Step 1: parse haha.log (alias line, FMIX base model)
+# Step 1: parse .log (alias line, FMIX base model)
 ######################################################
 base_model = nil
+fallback_model = nil
 
 File.foreach(log_file) do |line|
   if line =~ /is alias for\s+(.+FMIX\{.+\})/
     full_model = Regexp.last_match(1)
     base_model, = full_model.split('+FMIX{', 2)
     break
+  elsif fallback_model.nil? && line =~ /-m\s+(.+FMIX\{.+\})/
+    full_model = Regexp.last_match(1)
+    fallback_model, = full_model.split('+FMIX{', 2)
   end
 end
+
+base_model ||= fallback_model
+
 
 ######################################################
 # Step 1b: fallback — parse base model from iqtree
@@ -65,7 +72,7 @@ end
 abort("ERROR: could not determine base substitution model") unless base_model
 
 ######################################################
-# Step 2: parse haha.iqtree (FMIX mixture table)
+# Step 2: parse .iqtree (FMIX mixture table)
 ######################################################
 components = []
 rates      = []
@@ -108,6 +115,7 @@ fmix_model =
     end
     "#{base_model}+FMIX{#{fmix_entries.join(',')}}"
   end
+
 
 ######################################################
 # Step 4: parse rate heterogeneity

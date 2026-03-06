@@ -53,23 +53,6 @@ def parse_pmsf(model_argu)
 end
 
 
-def processbar_for_bootstrapping(file:, b:)
-  thr = Thread.new do |i|
-    count = 0
-    while true do
-      next if not File.exist?(file)
-      new_count = `wc -l #{file} | awk '{print $1}'`.chomp.to_i
-      sleep(0.2)
-      if new_count != count
-        count = new_count
-        processbar(count, b)
-      end
-    end
-  end
-  return(thr)
-end
-
-
 def get_files_under_folder(folder, b)
   files = Array.new
   Find.find(folder) do |path|
@@ -353,7 +336,8 @@ ali2lines.to_a.reverse.each do |count, lines|
   STDOUT.puts "Running IQ-Tree ......"
 
   # to record how many bootstrap trees are built
-  thr = processbar_for_bootstrapping(file:boottree_file, b:bootstrap)
+  #thr = processbar_for_bootstrapping(file:boottree_file, b:bootstrap)
+  thr = progressbar_for_bootstrapping(file: boottree_file, total: bootstrap)
 
   if is_pmsf
     `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/guide -nt #{cpu} -quiet -m LG4M+G #{te_argu} #{add_argu}`
@@ -377,7 +361,7 @@ ali2lines.to_a.reverse.each do |count, lines|
     exit
   end
 
-  Thread.kill(thr) and puts if $? == 0
+  #Thread.kill(thr) and puts if $? == 0
 
   `#{NW_TOPOLOGY} -Ib #{boottree_file} | ruby #{REORDER_NODE} -i - --ref #{ref_tree_file} > #{iqtree_outdir}/boot.bls`
 
@@ -414,12 +398,14 @@ if is_run_mcmctree
   STDOUT.puts "Running MCMCtree ......"
   Dir.chdir(mcmctree_outdir)
 
-  thr = processbar_for_bootstrapping(file:'mcmc.txt', b:get_iter_num(File.basename(mcmctree_ctl_file)))
+  thr = progressbar_for_bootstrapping(file:'mcmc.txt', total:get_iter_num(File.basename(mcmctree_ctl_file)))
+  thr.call
 
   `#{MCMCTREE} #{File.basename(mcmctree_ctl_file)} > mcmctree.final`
 
   if $? == 0
-    Thread.kill(thr) and puts
+    #Thread.kill(thr) and puts
+    puts
     `bash #{FIGTREE2NWK} -i FigTree.tre > figtree.nwk`
     `grep rategram out* >/dev/null && grep -A1 rategram out* | tail -1 > rate.tre`
     puts "Done!" if $? == 0

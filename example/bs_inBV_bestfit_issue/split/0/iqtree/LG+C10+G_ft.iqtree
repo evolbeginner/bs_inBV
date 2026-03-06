@@ -1,9 +1,9 @@
 IQ-TREE 3.0.1 built May  5 2025
 
-Input file name: bs_inBV_bestfit/split/0/combined.phy
+Input file name: ../combined.phy
 User tree file name: ref.tre
 Type of analysis: tree reconstruction
-Random seed number: 592716
+Random seed number: 232488
 
 REFERENCES
 ----------
@@ -42,27 +42,27 @@ Model of substitution: LG+SSF+F+G4
 State frequencies: (site specific frequencies)
 
 Model of rate heterogeneity: Gamma with 4 categories
-Gamma shape alpha: 0.8148
+Gamma shape alpha: 0.8000
 
  Category  Relative_rate  Proportion
-  1         0.0987         0.2500
-  2         0.4130         0.2500
-  3         0.9610         0.2500
-  4         2.5273         0.2500
+  1         0.0956         0.2500
+  2         0.4071         0.2500
+  3         0.9569         0.2500
+  4         2.5404         0.2500
 Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
 
 USER TREE
 ---------
 
-Log-likelihood of the tree: -1482.7848 (s.e. 111.6126)
+Log-likelihood of the tree: -1475.6772 (s.e. 111.4735)
 Unconstrained log-likelihood (without tree): -443.1056
 Number of free parameters (#branches + #model parameters): 77
-Akaike information criterion (AIC) score: 3119.5697
-Corrected Akaike information criterion (AICc) score: 3665.5697
-Bayesian information criterion (BIC) score: 3320.1678
+Akaike information criterion (AIC) score: 3105.3543
+Corrected Akaike information criterion (AICc) score: 3651.3543
+Bayesian information criterion (BIC) score: 3305.9524
 
-Total tree length (sum of branch lengths): 3.2797
-Sum of internal branch lengths: 0.8568 (26.1236% of tree length)
+Total tree length (sum of branch lengths): 3.2402
+Sum of internal branch lengths: 0.8458 (26.1022% of tree length)
 
 WARNING: 9 near-zero internal branches (<0.0100) should be treated with caution
          Such branches are denoted by '**' in the figure below
@@ -89,7 +89,7 @@ NOTE: Tree is UNROOTED although outgroup taxon 't3' is drawn at root
            |                        +--|
            |                        |  +---------------------t16
            |                 +------|
-           |                 |      +-----------------t15
+           |                 |      +------------------t15
            |              +--|
            |              |  |          +--------t5
            |              |  +----------|
@@ -131,28 +131,28 @@ NOTE: Tree is UNROOTED although outgroup taxon 't3' is drawn at root
 
 Tree in newick format:
 
-(t3:0.0351486846,t24:0.0626204562,(((t22:0.0598745964,((t1:0.0000025000,t7:0.0000025000):0.0000025000,t17:0.0000025000):0.1582306316):0.0000024377,t18:0.0224606992):0.0166924975,(((((t21:0.0650191735,t19:0.0568636191):0.0795926167,t16:0.2031126739):0.0154168050,t15:0.1696992517):0.0634698456,(t5:0.0848220500,(t8:0.0431340389,t23:0.0613577258):0.0458482857):0.0994222260):0.0144588799,(t14:0.2001645017,((t9:0.1467834647,(t27:0.1303654162,(t29:0.1838392122,((t20:0.0827951111,((t10:0.0000025000,t28:0.0093340990):0.0097500956,t30:0.0192450142):0.0202440860):0.0265929718,t12:0.1570095062):0.0308016225):0.0000025000):0.0000025000):0.0346793147,(((t13:0.0597046895,t6:0.0767628986):0.0458282780,((t25:0.0000025000,t11:0.0095459634):0.0816662652,(t2:0.0349918942,t4:0.1378997200):0.0770810293):0.0064615147):0.0000025000,t26:0.0606709121):0.0405346723):0.0000025000):0.0000029057):0.1406962936):0.0989283838);
+(t3:0.0345167580,t24:0.0621806754,(((t22:0.0586759425,((t1:0.0000025000,t7:0.0000025000):0.0000025000,t17:0.0000025000):0.1557415907):0.0000024377,t18:0.0221507239):0.0166003437,(((((t21:0.0639174893,t19:0.0563066003):0.0787466431,t16:0.2002533195):0.0150149416,t15:0.1678918193):0.0625888549,(t5:0.0842746417,(t8:0.0425524107,t23:0.0613627602):0.0454317493):0.0980376645):0.0142757704,(t14:0.1983768959,((t9:0.1447715211,(t27:0.1288591613,(t29:0.1821583903,((t20:0.0815851695,((t10:0.0000025000,t28:0.0092006809):0.0095968513,t30:0.0189888535):0.0201428524):0.0262915229,t12:0.1549554717):0.0303012596):0.0000025000):0.0000025000):0.0342283398,(((t13:0.0591155727,t6:0.0758774907):0.0452672142,((t25:0.0000025000,t11:0.0094193492):0.0809014564,(t2:0.0346028442,t4:0.1362902449):0.0762446216):0.0060716051):0.0000025000,t26:0.0599085356):0.0400337250):0.0000025000):0.0000028346):0.1388073985):0.0976678679);
 
 ALISIM COMMAND
 --------------
 To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
 
---alisim simulated_MSA -t bs_inBV_bestfit/split/0/iqtree/iqtree.treefile -m "LG+SSF{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}+F{0.0296667,0.0396667,0.0513333,0.0466667,0.00866667,0.0376667,0.058,0.0683333,0.0536667,0.073,0.142,0.0476667,0.0303333,0.0473333,0.0556667,0.0526667,0.0313333,0,0.036,0.0903333}+G4{0.814823}" --length 100
+--alisim simulated_MSA -t LG+C10+G_ft.treefile -m "LG+SSF{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}+F{0.0296667,0.0396667,0.0513333,0.0466667,0.00866667,0.0376667,0.058,0.0683333,0.0536667,0.073,0.142,0.0476667,0.0303333,0.0473333,0.0556667,0.0526667,0.0313333,0,0.036,0.0903333}+G4{0.799968}" --length 100
 
 To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
 
-iqtree -s bs_inBV_bestfit/split/0/combined.phy --alisim mimicked_MSA
+iqtree -s ../combined.phy --alisim mimicked_MSA
 
 To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
 
-iqtree -s bs_inBV_bestfit/split/0/combined.phy --alisim mimicked_MSA --num-alignments 100
+iqtree -s ../combined.phy --alisim mimicked_MSA --num-alignments 100
 
 For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
 
 TIME STAMP
 ----------
 
-Date and time: Fri Mar  6 23:26:01 2026
-Total CPU time used: 0.35924 seconds (0h:0m:0s)
-Total wall-clock time used: 0.0559956 seconds (0h:0m:0s)
+Date and time: Fri Mar  6 22:59:13 2026
+Total CPU time used: 0.358073 seconds (0h:0m:0s)
+Total wall-clock time used: 0.0496177 seconds (0h:0m:0s)
 

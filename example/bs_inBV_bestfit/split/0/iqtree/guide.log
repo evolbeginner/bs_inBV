@@ -4,18 +4,18 @@ Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
 Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
 
 Host:    mic-r750 (AVX512, FMA3, 1007 GB RAM)
-Command: /mnt/hd1/home/sishuo/bin/iqtree3_intel -redo -s bs_inBV_bestfit/split/0/combined.phy -pre bs_inBV_bestfit/split/0/iqtree/iqtree -nt 10 -quiet -m LG+C10+G -te ref.tre -mwopt -keep-ident -fs bs_inBV_bestfit/split/0/iqtree/iqtree.sitefreq
-Seed:    592716 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Fri Mar  6 23:26:01 2026
+Command: /mnt/hd1/home/sishuo/bin/iqtree3_intel -redo -s bs_inBV_bestfit/split/0/combined.phy -pre bs_inBV_bestfit/split/0/iqtree/guide -nt 10 -quiet -m LG4M+G -te ref.tre -mwopt -keep-ident
+Seed:    914451 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Fri Mar  6 23:26:00 2026
 Kernel:  AVX+FMA - 10 threads (128 CPU cores detected)
 
 Reading alignment file bs_inBV_bestfit/split/0/combined.phy ... Phylip format detected
 Alignment most likely contains protein sequences
-Constructing alignment: done in 0.000112893 secs using 48.72% CPU
+Constructing alignment: done in 0.000123144 secs using 99.07% CPU
 Alignment has 30 sequences with 100 columns, 90 distinct patterns
 59 parsimony-informative, 15 singleton sites, 26 constant sites
      Gap/Ambiguity  Composition  p-value
-Analyzing sequences: done in 7.7337e-06 secs using 38.79% CPU
+Analyzing sequences: done in 8.4918e-06 secs using 82.43% CPU
    1  t3     0.00%    passed     99.98%
    2  t24    0.00%    passed     98.60%
    3  t22    0.00%    passed     99.90%
@@ -47,36 +47,34 @@ Analyzing sequences: done in 7.7337e-06 secs using 38.79% CPU
   29  t4     0.00%    passed     98.26%
   30  t26    0.00%    passed    100.00%
 ****  TOTAL    0.00%  0 sequences failed composition chi2 test (p-value<5%; df=18)
-
-Reading site-specific state frequency file bs_inBV_bestfit/split/0/iqtree/iqtree.sitefreq ...
-90 distinct per-site state frequency vectors detected
 NOTE: State(s) W not present in alignment and thus removed from Markov process to prevent numerical problems
 NOTE: 1 states (see above) are not present and thus removed from Markov process to prevent numerical problems
 Reading input tree file ref.tre ...
-Model LG+C10+G is alias for LG+POISSON+G+FMIX{C10pi1:1:0.1191344178,C10pi2:1:0.0874372456,C10pi3:1:0.1037105070,C10pi4:1:0.0922584809,C10pi5:1:0.1070492801,C10pi6:1:0.1329945166,C10pi7:1:0.0538028458,C10pi8:1:0.0691986212,C10pi9:1:0.1319937434,C10pi10:1:0.1024203429}+G
+Model LG4M+G is alias for MIX{LG4M1,LG4M2,LG4M3,LG4M4}*G4+G
+NOTE: both +G and *G were specified, continue with *G
 
 NOTE: 2 MB RAM (0 GB) is required!
 WARNING: Number of threads seems too high for short alignments. Use -T AUTO to determine best number of threads.
 Estimate model parameters (epsilon = 0.010)
-1. Initial log-likelihood: -1485.610
-2. Current log-likelihood: -1482.813
-3. Current log-likelihood: -1482.785
-Optimal log-likelihood: -1482.785
-Gamma shape alpha: 0.815
-Parameters optimization took 3 rounds (0.026 sec)
+1. Initial log-likelihood: -1670.497
+2. Current log-likelihood: -1666.545
+3. Current log-likelihood: -1666.529
+Optimal log-likelihood: -1666.529
+Gamma shape alpha: 1.222
+Parameters optimization took 3 rounds (0.029 sec)
 Wrote distance file to... 
-BEST SCORE FOUND : -1482.785
-Total tree length: 3.280
+BEST SCORE FOUND : -1666.529
+Total tree length: 3.570
 
 Total number of iterations: 0
 CPU time used for tree search: 0.000 sec (0h:0m:0s)
 Wall-clock time used for tree search: 0.000 sec (0h:0m:0s)
-Total CPU time used: 0.359 sec (0h:0m:0s)
-Total wall-clock time used: 0.056 sec (0h:0m:0s)
+Total CPU time used: 0.346 sec (0h:0m:0s)
+Total wall-clock time used: 0.038 sec (0h:0m:0s)
 
 Analysis results written to: 
-  IQ-TREE report:                bs_inBV_bestfit/split/0/iqtree/iqtree.iqtree
-  Maximum-likelihood tree:       bs_inBV_bestfit/split/0/iqtree/iqtree.treefile
-  Screen log file:               bs_inBV_bestfit/split/0/iqtree/iqtree.log
+  IQ-TREE report:                bs_inBV_bestfit/split/0/iqtree/guide.iqtree
+  Maximum-likelihood tree:       bs_inBV_bestfit/split/0/iqtree/guide.treefile
+  Screen log file:               bs_inBV_bestfit/split/0/iqtree/guide.log
 
-Date and Time: Fri Mar  6 23:26:01 2026
+Date and Time: Fri Mar  6 23:26:00 2026

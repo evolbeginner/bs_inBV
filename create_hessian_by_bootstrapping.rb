@@ -231,7 +231,7 @@ bootstrap = 1000
 bootstrap_argu = "-b #{bootstrap}"
 te_argu = nil
 is_pmsf = false
-add_argu = '-mwopt'
+add_argu = '-mwopt -keep-ident'
 calib_tree_file = nil
 ref_tree_file = nil
 
@@ -342,11 +342,18 @@ ali2lines.to_a.reverse.each do |count, lines|
   thr = progressbar_for_bootstrapping(file: boottree_file, total: bootstrap)
 
   if is_pmsf
-    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/guide -nt #{cpu} -quiet -m LG4M+G #{te_argu} #{add_argu}`
-    add_argu = [add_argu, "-ft #{iqtree_outdir}/guide.treefile"].join(' ')
+    ` #{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/guide -nt #{cpu} -quiet -m LG4M+G #{te_argu} #{add_argu} `
+    # phase 1 -ft by -n 0
+    ` #{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu} -ft #{iqtree_outdir}/guide.treefile -n 0`
+
+    add_argu = [add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq"].join(' ')
+    if is_best_fit #specific to best_fit
+      `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu} #{bootstrap_argu}`
+    end
   end
 
   model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
+  p model_argu_new; exit
 
   STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/ and (! is_pmsf)
 

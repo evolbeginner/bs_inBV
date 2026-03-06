@@ -1,3 +1,6 @@
+### v1.3.4 — 2026-03-07
+- **Fixed:** `--best_fit` for pmsf by `-fs` and `-keep-ident`
+
 ### v1.3.3 — 2026-03-06
 - **Fixed:** `--best_fit`
 

@@ -362,7 +362,7 @@ ali2lines.to_a.reverse.each do |count, lines|
 
   model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
 
-  STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/
+  STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/ and (! is_pmsf)
 
   if not is_param_bs
     `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{te_argu} #{add_argu} #{bootstrap_argu}`

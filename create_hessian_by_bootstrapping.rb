@@ -156,8 +156,9 @@ def get_seqlen_from_phylip(ali_file1)
   File.open(ali_file1) { |f| f.readline.split[1].to_i }
 end
 
-def determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit)
-  if is_best_fit
+
+def determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit, is_full_pmsf)
+  if is_best_fit or is_full_pmsf
     # no bootstrap
     run_iqtree(
       s: ali_file1,
@@ -170,7 +171,7 @@ def determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu
 
     # best-fitting model
     model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
-    model_argu_new = ['-m', "'" + model_best + "'"].join(' ')
+    model_argu_new = is_best_fit ? ['-m', "'" + model_best + "'"].join(' ') : model_argu
   else
     model_argu_new = model_argu
   end
@@ -269,6 +270,7 @@ bootstrap = 1000
 bootstrap_argu = "-b #{bootstrap}"
 te_argu = nil
 is_pmsf = false
+is_full_pmsf = false # -b
 add_argu = '-mwopt -keep-ident'
 calib_tree_file = nil
 ref_tree_file = nil
@@ -292,6 +294,7 @@ opts = GetoptLong.new(
   ['-m', GetoptLong::REQUIRED_ARGUMENT],
   ['-b', GetoptLong::REQUIRED_ARGUMENT],
   ['--pmsf', GetoptLong::NO_ARGUMENT],
+  ['--full_pmsf', GetoptLong::NO_ARGUMENT],
   ['--te', GetoptLong::REQUIRED_ARGUMENT],
   ['--calib_tree', '--calibrated_tree', GetoptLong::REQUIRED_ARGUMENT],
   ['--outdir', GetoptLong::REQUIRED_ARGUMENT],
@@ -325,6 +328,9 @@ opts.each do |opt, value|
   when '--te'
     te_argu = make_argu('-te', value)
   when '--pmsf'
+    is_pmsf = true
+  when '--full_pmsf'
+    is_full_pmsf = true
     is_pmsf = true
   when '--calib_tree', '--calibrated_tree'
     calib_tree_file = value
@@ -366,6 +372,7 @@ mkdir_with_force(outdir_split, is_force)
 
 STDERR.puts "CPU:\t#{cpu}".colorize(:red)
 
+
 ############################################################
 ali2lines.to_a.reverse.each do |count, lines|
   outdir_split1, ali_file1, iqtree_outdir, mcmctree_outdir, boottree_file, mltree_file, inBV_file =
@@ -398,21 +405,22 @@ ali2lines.to_a.reverse.each do |count, lines|
         add_argu: add_argu,
         extra: "-ft #{iqtree_outdir}/guide.treefile -n 0"
       )
-      bootstrap_argu = bootstrap_argu.sub(/[-]b\s+\d+/, ' ')
+      bootstrap_argu = bootstrap_argu.sub(/[-]b\s+\d+/, ' ') if is_full_pmsf
       add_argu = join_nonempty(add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq")
     else
       add_argu = join_nonempty(add_argu, "-ft #{iqtree_outdir}/guide.treefile")
     end
   end
 
-  model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit)
+  model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit, is_full_pmsf)
+  #p model_argu_new; exit
 
   add_argu.gsub!('-mwopt', '') if is_best_fit
 
   STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/ and (!is_pmsf)
 
   if not is_param_bs #for nonparam bs
-    if is_pmsf and is_best_fit
+    if is_full_pmsf
       bs_outdir = File.join(iqtree_outdir, 'bs')
       mkdir_with_force(bs_outdir)
       ` ruby #{BS_PHYLIP} --outdir #{bs_outdir} -i #{ali_file1} -b #{bootstrap} `
@@ -421,6 +429,7 @@ ali2lines.to_a.reverse.each do |count, lines|
         bs_suboutdir = File.join(bs_outdir, b.to_s)
         add_argu.sub!(/[-]fs\s+\S+/, ' ')
         add_argu_with_fs = join_nonempty(add_argu, "-fs #{bs_suboutdir}/iqtree.sitefreq")
+        add_argu_with_fs.sub!(/[-s]ft\s+\S+/, '')
         add_argu_special = add_argu_with_fs.gsub(/[-]fs\s+\S+/, '').strip
 
         run_iqtree(
@@ -451,7 +460,7 @@ ali2lines.to_a.reverse.each do |count, lines|
           bootstrap_argu: bootstrap_argu
         )
 
-        system("cat #{bs_suboutdir}/iqtree.treefile  >> #{boottree_file}")
+        system("cat #{bs_suboutdir}/iqtree.treefile >> #{boottree_file}")
       end
     else # not (best_fit + pmsf)
       run_iqtree(
@@ -496,6 +505,7 @@ ali2lines.to_a.reverse.each do |count, lines|
   mltree_file = File.join(iqtree_outdir, 'iqtree.treefile')
   create_inBV(mltree_file: mltree_file, mcmctree_outdir: mcmctree_outdir, inBV_file: inBV_file, iqtree_outdir: iqtree_outdir)
 end
+
 
 ############################################################
 inBV_files = get_files_under_folder(outdir, 'in.BV')

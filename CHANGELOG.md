@@ -1,3 +1,6 @@
+### v1.4.1 — 2026-03-10
+- **New:** Added `--full_pmsf`.
+
 ### v1.4.0 — 2026-03-10
 - **New:** Added full support for `-b` with `--pmsf` by the script `lib/bs_phylip_noallgap.rb`.
 - **Improved:** PMSF under `--best_fit`

@@ -1,6 +1,5 @@
 #! /bin/env ruby
 
-
 ############################################################
 require 'getoptlong'
 require 'parallel'
@@ -16,7 +15,7 @@ require_relative 'lib/do_mcmctree.rb'
 
 ############################################################
 #RSCRIPT="/usr/bin/Rscript" # otherwise cannot work w/ cl007
-RSCRIPT='Rscript'
+RSCRIPT = 'Rscript'
 
 $VERBOSE = nil
 DIR = File.dirname(__FILE__)
@@ -30,7 +29,8 @@ MCMCTREE ||= 'mcmctree'
 REORDER_NODE = File.join(DIR, 'reorder_node.rb')
 FROM_BS_TO_HESSIAN = File.join(DIR, 'from_bs_to_hessian.R')
 FIGTREE2NWK ||= File.expand_path(File.join(LIB_DIR, 'figtree2tree.sh'))
-EXTRACT_PARAM_FROM_IQTREE = File.join(DIR, "extract_param_from_iqtree_file.rb")
+EXTRACT_PARAM_FROM_IQTREE = File.join(LIB_DIR, "extract_param_from_iqtree_file.rb")
+BS_PHYLIP = File.join(LIB_DIR, "bs_phylip_noallgap.rb")
 
 #SOURCE_IQTREE = File.expand_path("~/software/phylo/iqtree/source/v3.0.1/iqtree3")
 
@@ -40,30 +40,55 @@ def help()
   exit 1
 end
 
-
 def make_argu(argu, value)
-  return([argu, value].join(' '))
+  [argu, value].join(' ')
 end
 
+def join_nonempty(*parts)
+  parts.flatten.compact.map(&:to_s).map(&:strip).reject(&:empty?).join(' ')
+end
+
+def iqtree_cmd(s:, pre:, nt:, model_argu: nil, te_argu: nil, add_argu: nil, bootstrap_argu: nil, extra: nil)
+  join_nonempty(
+    IQTREE, '-redo',
+    "-s #{s}",
+    "-pre #{pre}",
+    "-nt #{nt}",
+    '-quiet',
+    model_argu,
+    te_argu,
+    add_argu,
+    bootstrap_argu,
+    extra
+  )
+end
+
+def run_iqtree(s:, pre:, nt:, model_argu: nil, te_argu: nil, add_argu: nil, bootstrap_argu: nil, extra: nil)
+  cmd = iqtree_cmd(
+    s: s, pre: pre, nt: nt,
+    model_argu: model_argu, te_argu: te_argu, add_argu: add_argu,
+    bootstrap_argu: bootstrap_argu, extra: extra
+  )
+  `#{cmd}`
+  raise "IQ-TREE failed: #{cmd}" unless $?.success?
+end
 
 def parse_pmsf(model_argu)
-  argu = model_argu.split('+').reject{|i|i=~/pmsf/i}.join('+')
+  argu = model_argu.split('+').reject { |i| i =~ /pmsf/i }.join('+')
   is_pmsf = model_argu =~ /pmsf/i ? true : false
-  return([argu, is_pmsf])
+  [argu, is_pmsf]
 end
 
-
 def get_files_under_folder(folder, b)
-  files = Array.new
+  files = []
   Find.find(folder) do |path|
     files << path if path =~ /#{b}$/
   end
-  return(files.join(' '))
+  files.join(' ')
 end
 
-
 def create_inBV(mltree_file:, mcmctree_outdir:, inBV_file:, iqtree_outdir:)
-  no_species = `#{NW_STATS} #{mltree_file} | grep '^#leaves:' | awk '{print $2}'`.chomp.to_i  
+  no_species = `#{NW_STATS} #{mltree_file} | grep '^#leaves:' | awk '{print $2}'`.chomp.to_i
   `bash -c "echo -e '\n#{no_species}\n' " >#{inBV_file}`
 
   `#{NW_TOPOLOGY} -bI #{mltree_file} >> #{inBV_file}`
@@ -72,7 +97,7 @@ def create_inBV(mltree_file:, mcmctree_outdir:, inBV_file:, iqtree_outdir:)
   `cat #{iqtree_outdir}/ml.bls >> #{inBV_file}`
   `echo >> #{inBV_file}`
 
-  gradient = [%w[0] * (2*no_species-3)].join(' ') # no. of branches equals 2n-3 where n is the no. of species
+  gradient = [%w[0] * (2 * no_species - 3)].join(' ') # no. of branches equals 2n-3 where n is the no. of species
   `echo #{gradient} >> #{inBV_file}`
   `echo >> #{inBV_file}`
 
@@ -80,7 +105,6 @@ def create_inBV(mltree_file:, mcmctree_outdir:, inBV_file:, iqtree_outdir:)
   `echo >> #{inBV_file}`
   `cat #{iqtree_outdir}/hessian >> #{inBV_file}`
 end
-
 
 def get_iter_num(mcmctree_ctl)
   no = nil
@@ -90,26 +114,24 @@ def get_iter_num(mcmctree_ctl)
     no = $1.to_i if line =~ /nsample[ ]*=[ ]*(\d+)/
   end
   in_fh.close
-  return(no)
+  no
 end
-
 
 def split_ali_file(ali_file)
   in_fh = File.open(ali_file)
-  ali2lines = Hash.new
+  ali2lines = {}
   count = -1
   in_fh.each_line do |line|
     line.chomp!
     if line =~ /\d+\s+\d+$/
       count += 1
-      ali2lines[count] = Array.new
+      ali2lines[count] = []
     end
     ali2lines[count] << line
   end
   in_fh.close
-  return(ali2lines)
+  ali2lines
 end
-
 
 def output_gapped_seq(outdir_split1, ali_file1, lines)
   out_fh = File.open(ali_file1, 'w')
@@ -120,7 +142,7 @@ def output_gapped_seq(outdir_split1, ali_file1, lines)
     if seq =~ /^[-]+$/
       out_fh_all_gap_seq.puts [seq_name].join("\t")
       k = 1
-      seq.sub!(/-{#{k}}/, 'A'*k)
+      seq.sub!(/-{#{k}}/, 'A' * k)
       line = seq_name + space + seq
     end
     out_fh.puts line
@@ -129,28 +151,31 @@ def output_gapped_seq(outdir_split1, ali_file1, lines)
   out_fh_all_gap_seq.close
 end
 
-
 ############################################################
 def get_seqlen_from_phylip(ali_file1)
   File.open(ali_file1) { |f| f.readline.split[1].to_i }
 end
 
-
-def determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
-
+def determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit)
   if is_best_fit
     # no bootstrap
-    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu}`
+    run_iqtree(
+      s: ali_file1,
+      pre: "#{iqtree_outdir}/iqtree",
+      nt: thread,
+      model_argu: model_argu,
+      te_argu: te_argu,
+      add_argu: add_argu
+    )
+
     # best-fitting model
-    #p "ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1"
     model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
-    #p model_best; exit
     model_argu_new = ['-m', "'" + model_best + "'"].join(' ')
   else
     model_argu_new = model_argu
   end
 
-  return(model_argu_new)
+  model_argu_new
 end
 
 
@@ -161,16 +186,16 @@ def setup_split_dirs(outdir_split, count, lines)
   ali_file1 = File.join(outdir_split1, 'combined.phy')
   output_gapped_seq(outdir_split1, ali_file1, lines)
 
-  iqtree_outdir   = File.join(outdir_split1, 'iqtree')
+  iqtree_outdir = File.join(outdir_split1, 'iqtree')
   mcmctree_outdir = File.join(outdir_split1, 'mcmctree')
   mkdir_with_force(iqtree_outdir)
   mkdir_with_force(mcmctree_outdir)
 
   boottree_file = File.join(iqtree_outdir, 'iqtree.boottrees')
-  mltree_file   = File.join(iqtree_outdir, 'iqtree.treefile')
-  inBV_file     = File.join(mcmctree_outdir, 'in.BV')
+  mltree_file = File.join(iqtree_outdir, 'iqtree.treefile')
+  inBV_file = File.join(mcmctree_outdir, 'in.BV')
 
-  return([outdir_split1, ali_file1, iqtree_outdir, mcmctree_outdir, boottree_file, mltree_file, inBV_file])
+  [outdir_split1, ali_file1, iqtree_outdir, mcmctree_outdir, boottree_file, mltree_file, inBV_file]
 end
 
 
@@ -180,14 +205,22 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
   Parallel.map(1..bootstrap, in_threads: cpu) do |c|
     param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
     mkdir_with_force(param_bs_outdir, true)
-    `
-      #{IQTREE} --alisim #{param_bs_outdir}/simulated_MSA -t #{mltree_file} -m #{model_best} --length #{seqlen}
-      #{IQTREE} -redo -s #{param_bs_outdir}/simulated_MSA.phy -pre #{param_bs_outdir}/iqtree -nt 1 -quiet #{model_argu_new} #{te_argu} #{add_argu}
-    ` or raise "IQ-TREE failed at bootstrap #{c}"
+
+    `#{IQTREE} --alisim #{param_bs_outdir}/simulated_MSA -t #{mltree_file} -m #{model_best} --length #{seqlen}`
+    raise "IQ-TREE --alisim failed at bootstrap #{c}" unless $?.success?
+
+    run_iqtree(
+      s: "#{param_bs_outdir}/simulated_MSA.phy",
+      pre: "#{param_bs_outdir}/iqtree",
+      nt: 1,
+      model_argu: model_argu_new,
+      te_argu: te_argu,
+      add_argu: add_argu
+    )
+
     system("cat #{iqtree_outdir}/param_bs/*/iqtree.treefile > #{boottree_file}")
   end
 end
-
 
 ############################################################
 # using finite diff. by specifying -flmix
@@ -198,11 +231,18 @@ def generate_bl_outdir(iqtree_outdir, boottree_file, ref_tree_file, ali_file1, m
   `#{NW_TOPOLOGY} -Ib #{boottree_file} | ruby #{REORDER_NODE} -i - --ref #{ref_tree_file} --bl_outdir #{bl_outdir} --force`
   bl_sub_outdirs = Dir.glob(File.join(bl_outdir, '*'))
   Parallel.each(bl_sub_outdirs, in_threads: cpu) do |bl_sub_outdir|
-    bl_outdir2s = Array.new
+    bl_outdir2s = []
     1.upto(2) do |i|
       bl_outdir2 = File.join(bl_sub_outdir, i.to_s)
-      bl_outdir2s = bl_outdir2s.push(bl_outdir2)
-      `#{IQTREE} -redo -s #{ali_file1} -pre #{bl_outdir2}/iqtree -nt 1 -quiet #{model_argu} -te #{bl_outdir2}/bl_changed.treefile #{add_argu} -blfix`
+      bl_outdir2s << bl_outdir2
+      run_iqtree(
+        s: ali_file1,
+        pre: "#{bl_outdir2}/iqtree",
+        nt: 1,
+        model_argu: model_argu,
+        te_argu: "-te #{bl_outdir2}/bl_changed.treefile",
+        add_argu: "#{add_argu} -blfix"
+      )
     end
     in_fh = File.open(File.join(bl_outdir2s[0], "step_size"), 'r')
     step = in_fh.readline.to_f
@@ -216,11 +256,9 @@ def generate_bl_outdir(iqtree_outdir, boottree_file, ref_tree_file, ali_file1, m
   end
 end
 
-
 def fd(lnL1, lnL2, step)
-  (lnL2-lnL1)/(2*step)
+  (lnL2 - lnL1) / (2 * step)
 end
-
 
 ############################################################
 mcmctree_indir = nil
@@ -238,10 +276,10 @@ ref_tree_file = nil
 outdir = nil
 is_force = false
 cpu = 1
+thread = cpu
 is_run_mcmctree = false
 is_best_fit = false
 is_param_bs = false
-
 
 ############################################################
 ARGV_COPY = Marshal.load(Marshal.dump(ARGV))
@@ -269,50 +307,49 @@ opts = GetoptLong.new(
 
 opts.each do |opt, value|
   case opt
-    when '--mcmctree_indir'
-      mcmctree_indir = value
-    when '--mcmctree_ctl'
-      mcmctree_ctl_file = value
-    when '--ali'
-      ali_file = value
-    when '--ref', '--ref_tree_file'
-      ref_tree_file = value
-      te_argu = make_argu('-te', value)
-    when '-m'
-      model_argu = make_argu('-m', value)
-      model_argu, is_pmsf = parse_pmsf(model_argu)
-    when '-b'
-      bootstrap = value.to_i
-      bootstrap_argu = make_argu('-b', value)
-    when '--te'
-      te_argu = make_argu('-te', value)
-    when '--pmsf'
-      is_pmsf = true
-    when '--calib_tree', '--calibrated_tree'
-      calib_tree_file = value
-    when '--outdir'
-      outdir = value
-    when '--force'
-      is_force = true
-    when '--cpu'
-      cpu = value.to_i
-    when '--run_mcmctree'
-      is_run_mcmctree = true
-    when '-h'
-      help()
-    when '--no_mcmctree'
-      is_run_mcmctree = false
-    when '--add_cmd', '--add_argu'
-      add_argu = value
-    when '--no_mwopt'
-      add_argu.sub!('-mwopt', '')
-    when '--best_fit', '--best-fit'
-      is_best_fit = true
-    when '--param_bs', '--param_bootstrap'
-      is_param_bs = true
+  when '--mcmctree_indir'
+    mcmctree_indir = value
+  when '--mcmctree_ctl'
+    mcmctree_ctl_file = value
+  when '--ali'
+    ali_file = value
+  when '--ref', '--ref_tree_file'
+    ref_tree_file = value
+    te_argu = make_argu('-te', value)
+  when '-m'
+    model_argu = make_argu('-m', value)
+    model_argu, is_pmsf = parse_pmsf(model_argu)
+  when '-b'
+    bootstrap = value.to_i
+    bootstrap_argu = make_argu('-b', value)
+  when '--te'
+    te_argu = make_argu('-te', value)
+  when '--pmsf'
+    is_pmsf = true
+  when '--calib_tree', '--calibrated_tree'
+    calib_tree_file = value
+  when '--outdir'
+    outdir = value
+  when '--force'
+    is_force = true
+  when '--cpu'
+    cpu = value.to_i
+  when '--run_mcmctree'
+    is_run_mcmctree = true
+  when '-h'
+    help()
+  when '--no_mcmctree'
+    is_run_mcmctree = false
+  when '--add_cmd', '--add_argu'
+    add_argu = value
+  when '--no_mwopt'
+    add_argu.sub!('-mwopt', '')
+  when '--best_fit', '--best-fit'
+    is_best_fit = true
+  when '--param_bs', '--param_bootstrap'
+    is_param_bs = true
   end
 end
-
 
 ############################################################
 mkdir_with_force(outdir, is_force)
@@ -329,11 +366,10 @@ mkdir_with_force(outdir_split, is_force)
 
 STDERR.puts "CPU:\t#{cpu}".colorize(:red)
 
-
 ############################################################
 ali2lines.to_a.reverse.each do |count, lines|
-  outdir_split1, ali_file1, iqtree_outdir, mcmctree_outdir, boottree_file, mltree_file, inBV_file = 
-    setup_split_dirs(outdir_split, count, lines) 
+  outdir_split1, ali_file1, iqtree_outdir, mcmctree_outdir, boottree_file, mltree_file, inBV_file =
+    setup_split_dirs(outdir_split, count, lines)
 
   STDOUT.puts "Running IQ-Tree ......"
 
@@ -342,26 +378,102 @@ ali2lines.to_a.reverse.each do |count, lines|
   thr = progressbar_for_bootstrapping(file: boottree_file, total: bootstrap)
 
   if is_pmsf
-    ` #{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/guide -nt #{cpu} -quiet -m LG4M+G #{te_argu} #{add_argu} `
-    # phase 1 -ft by -n 0
-    ` #{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu} -ft #{iqtree_outdir}/guide.treefile -n 0`
+    run_iqtree(
+      s: ali_file1,
+      pre: "#{iqtree_outdir}/guide",
+      nt: thread,
+      model_argu: '-m LG4M+G',
+      te_argu: te_argu,
+      add_argu: add_argu
+    )
 
-    add_argu = [add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq"].join(' ')
-    if is_best_fit #specific to best_fit
-      `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu} #{te_argu} #{add_argu} #{bootstrap_argu}`
+    if is_best_fit # specific to --best_fit
+      # phase 1 -ft by -n 0
+      run_iqtree(
+        s: ali_file1,
+        pre: "#{iqtree_outdir}/iqtree",
+        nt: thread,
+        model_argu: model_argu,
+        te_argu: te_argu,
+        add_argu: add_argu,
+        extra: "-ft #{iqtree_outdir}/guide.treefile -n 0"
+      )
+      bootstrap_argu = bootstrap_argu.sub(/[-]b\s+\d+/, ' ')
+      add_argu = join_nonempty(add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq")
+    else
+      add_argu = join_nonempty(add_argu, "-ft #{iqtree_outdir}/guide.treefile")
     end
   end
 
-  model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, cpu, bootstrap_argu, te_argu, add_argu, is_best_fit)
-  p model_argu_new; exit
+  model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit)
 
-  STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/ and (! is_pmsf)
+  add_argu.gsub!('-mwopt', '') if is_best_fit
 
-  if not is_param_bs
-    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{te_argu} #{add_argu} #{bootstrap_argu}`
+  STDERR.puts "Note: pmsf not used for seemingly profile-mixture model #{model_argu}. Take long.".colorize(:blue) if model_argu =~ /C[0-9]+/ and (!is_pmsf)
+
+  if not is_param_bs #for nonparam bs
+    if is_pmsf and is_best_fit
+      bs_outdir = File.join(iqtree_outdir, 'bs')
+      mkdir_with_force(bs_outdir)
+      ` ruby #{BS_PHYLIP} --outdir #{bs_outdir} -i #{ali_file1} -b #{bootstrap} `
+      Parallel.map(1..bootstrap, in_threads:cpu) do |b|
+        thread = 1
+        bs_suboutdir = File.join(bs_outdir, b.to_s)
+        add_argu.sub!(/[-]fs\s+\S+/, ' ')
+        add_argu_with_fs = join_nonempty(add_argu, "-fs #{bs_suboutdir}/iqtree.sitefreq")
+        add_argu_special = add_argu_with_fs.gsub(/[-]fs\s+\S+/, '').strip
+
+        run_iqtree(
+          s: "#{bs_suboutdir}/combined.phy",
+          pre: "#{bs_suboutdir}/guide",
+          nt: thread,
+          model_argu: '-m LG4M+G',
+          te_argu: te_argu
+        )
+
+        run_iqtree(
+          s: "#{bs_suboutdir}/combined.phy",
+          pre: "#{bs_suboutdir}/iqtree",
+          nt: thread,
+          model_argu: model_argu,
+          te_argu: te_argu,
+          add_argu: add_argu_special,
+          extra: "-ft #{iqtree_outdir}/guide.treefile -n 0"
+        )
+
+        run_iqtree(
+          s: "#{bs_suboutdir}/combined.phy",
+          pre: "#{bs_suboutdir}/iqtree",
+          nt: thread,
+          model_argu: model_argu_new,
+          te_argu: te_argu,
+          add_argu: add_argu_with_fs,
+          bootstrap_argu: bootstrap_argu
+        )
+
+        system("cat #{bs_suboutdir}/iqtree.treefile  >> #{boottree_file}")
+      end
+    else # not (best_fit + pmsf)
+      run_iqtree(
+        s: ali_file1,
+        pre: "#{iqtree_outdir}/iqtree",
+        nt: thread,
+        model_argu: model_argu_new,
+        te_argu: te_argu,
+        add_argu: add_argu,
+        bootstrap_argu: bootstrap_argu
+      )
+    end
   else
     # generate the ML tree
-    `#{IQTREE} -redo -s #{ali_file1} -pre #{iqtree_outdir}/iqtree -nt #{cpu} -quiet #{model_argu_new} #{te_argu} #{add_argu}`
+    run_iqtree(
+      s: ali_file1,
+      pre: "#{iqtree_outdir}/iqtree",
+      nt: thread,
+      model_argu: model_argu_new,
+      te_argu: te_argu,
+      add_argu: add_argu
+    )
     do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file)
   end
 
@@ -382,9 +494,8 @@ ali2lines.to_a.reverse.each do |count, lines|
   `#{RSCRIPT} #{FROM_BS_TO_HESSIAN} #{iqtree_outdir}/boot.bls #{iqtree_outdir}/hessian`
 
   mltree_file = File.join(iqtree_outdir, 'iqtree.treefile')
-  create_inBV(mltree_file:mltree_file, mcmctree_outdir:mcmctree_outdir, inBV_file:inBV_file, iqtree_outdir:iqtree_outdir)
+  create_inBV(mltree_file: mltree_file, mcmctree_outdir: mcmctree_outdir, inBV_file: inBV_file, iqtree_outdir: iqtree_outdir)
 end
-
 
 ############################################################
 inBV_files = get_files_under_folder(outdir, 'in.BV')
@@ -393,14 +504,14 @@ mcmctree_outdir = File.join(outdir, 'mcmctree')
 mkdir_with_force(mcmctree_outdir)
 `cat #{inBV_files} > #{mcmctree_outdir}/in.BV`
 
-FileUtils.cp(ali_file, File.join(mcmctree_outdir,'combined.phy'))
+FileUtils.cp(ali_file, File.join(mcmctree_outdir, 'combined.phy'))
 `cp #{calib_tree_file} #{mcmctree_outdir}/species.trees`
 
 ############################################################
 # optional
 
-if ! mcmctree_ctl_file.nil?
-  prepare_paml_ctl(mcmctree_ctl_file, mcmctree_outdir, {'seqfile'=>'combined.phy', 'treefile'=>'species.trees'})
+if !mcmctree_ctl_file.nil?
+  prepare_paml_ctl(mcmctree_ctl_file, mcmctree_outdir, {'seqfile' => 'combined.phy', 'treefile' => 'species.trees'})
 end
 
 if is_run_mcmctree
@@ -408,7 +519,7 @@ if is_run_mcmctree
   STDOUT.puts "Running MCMCtree ......"
   Dir.chdir(mcmctree_outdir)
 
-  thr = progressbar_for_bootstrapping(file:'mcmc.txt', total:get_iter_num(File.basename(mcmctree_ctl_file)))
+  thr = progressbar_for_bootstrapping(file: 'mcmc.txt', total: get_iter_num(File.basename(mcmctree_ctl_file)))
   thr.call
 
   `#{MCMCTREE} #{File.basename(mcmctree_ctl_file)} > mcmctree.final`

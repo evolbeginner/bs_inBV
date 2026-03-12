@@ -210,7 +210,7 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
     param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
     mkdir_with_force(param_bs_outdir, true)
     if is_pmsf
-      puts "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force "
+      #puts "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force "
       ` ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null `
       seq_file = File.join(param_bs_outdir, '1', 'combined.phy')
     else
@@ -226,9 +226,9 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
       te_argu: te_argu,
       add_argu: add_argu
     )
-  end
 
-  system("cat #{iqtree_outdir}/param_bs/*/iqtree.treefile > #{boottree_file}")
+    system("cat #{param_bs_outdir}/iqtree.treefile >> #{boottree_file}")
+  end
 end
 
 
@@ -314,8 +314,9 @@ opts = GetoptLong.new(
   ['--no_mcmctree', GetoptLong::NO_ARGUMENT],
   ['--add_cmd', '--add_argu', GetoptLong::REQUIRED_ARGUMENT],
   ['--no_mwopt', GetoptLong::NO_ARGUMENT],
-  ['--best_fit', '--best-fit', GetoptLong::NO_ARGUMENT],
+  ['--best_fit', '--best-fit', GetoptLong::OPTIONAL_ARGUMENT],
   ['--param_bs', '--param_bootstrap', GetoptLong::NO_ARGUMENT],
+  ['--bs', GetoptLong::REQUIRED_ARGUMENT],
 )
 
 opts.each do |opt, value|
@@ -362,8 +363,15 @@ opts.each do |opt, value|
     add_argu.sub!('-mwopt', '')
   when '--best_fit', '--best-fit'
     is_best_fit = true
+    is_best_fit = false if value.nil? and value =~ /No|N/i
   when '--param_bs', '--param_bootstrap'
     is_param_bs = true
+  when '--bs'
+    if value =~ /^param|pbs|param_bs$/
+      is_param_bs = true
+    elsif value =~ /^npbs|nonparam_bs|bs$/
+      is_param_bs = false
+    end
   end
 end
 
@@ -406,22 +414,18 @@ ali2lines.to_a.reverse.each do |count, lines|
       add_argu: add_argu
     )
 
-    if is_best_fit # specific to --best_fit
-      # phase 1 -ft by -n 0
-      run_iqtree(
-        s: ali_file1,
-        pre: "#{iqtree_outdir}/iqtree",
-        nt: thread,
-        model_argu: model_argu,
-        te_argu: te_argu,
-        add_argu: add_argu,
-        extra: "-ft #{iqtree_outdir}/guide.treefile -n 0"
-      )
-      bootstrap_argu = bootstrap_argu.sub(/[-]b\s+\d+/, ' ') if is_full_pmsf
-      add_argu = join_nonempty(add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq")
-    else
-      add_argu = join_nonempty(add_argu, "-ft #{iqtree_outdir}/guide.treefile")
-    end
+    # phase 1 -ft by -n 0
+    run_iqtree(
+      s: ali_file1,
+      pre: "#{iqtree_outdir}/iqtree",
+      nt: thread,
+      model_argu: model_argu,
+      te_argu: te_argu,
+      add_argu: add_argu,
+      extra: "-ft #{iqtree_outdir}/guide.treefile -n 0"
+    )
+    bootstrap_argu = bootstrap_argu.sub(/[-]b\s+\d+/, ' ') if is_full_pmsf
+    add_argu = join_nonempty(add_argu, "-fs #{iqtree_outdir}/iqtree.sitefreq") if is_best_fit
   end
 
   model_argu_new = determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu, te_argu, add_argu, is_best_fit, is_full_pmsf)
@@ -496,7 +500,7 @@ ali2lines.to_a.reverse.each do |count, lines|
       add_argu: add_argu
     )
     do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file, is_pmsf)
-    p add_argu
+    #p add_argu
   end
 
   if File.read(File.join(iqtree_outdir, "iqtree.log")).include?("ERROR: No mixture model was specified!")

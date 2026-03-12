@@ -241,7 +241,7 @@ Parallel.each(1..opts[:nrep], in_processes: opts[:cpu]) do |rep|
     end
   end
 
-  $stderr.puts "done #{rep}/#{opts[:nrep]}"
+  puts "done #{rep}/#{opts[:nrep]}"
 end
 
 puts "Done: #{opts[:outdir]}/<rep>/combined.phy"

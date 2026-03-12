@@ -1,4 +1,7 @@
-### v1.4.2 — 2026-03-10
+### v1.4.3 — 2026-03-12
+- **New:** Improved `--param_bs` (or `--bs pbs`), `--best_fit [y]`
+
+### v1.4.2 — 2026-03-12
 - **New:** Improved `--param_bs`. Now parametric bs is better performed and particularly the script `lib/pmsf_sitewise_alisim.rb` helps simulating alignment under pmsf.
 
 ### v1.4.1 — 2026-03-10

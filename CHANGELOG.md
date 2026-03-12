@@ -1,3 +1,6 @@
+### v1.4.4 — 2026-03-12
+- **New:** Fixed some bugs.
+
 ### v1.4.3 — 2026-03-12
 - **New:** Improved `--param_bs` (or `--bs pbs`), `--best_fit [y]`
 

@@ -170,7 +170,7 @@ def determine_model(model_argu, ali_file1, iqtree_outdir, thread, bootstrap_argu
     )
 
     # best-fitting model
-    model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
+    model_best = ` ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1 `.chomp
     model_argu_new = is_best_fit ? ['-m', "'" + model_best + "'"].join(' ') : model_argu
   else
     model_argu_new = model_argu
@@ -418,7 +418,7 @@ ali2lines.to_a.reverse.each do |count, lines|
     run_iqtree(
       s: ali_file1,
       pre: "#{iqtree_outdir}/iqtree",
-      nt: thread,
+      nt: cpu,
       model_argu: model_argu,
       te_argu: te_argu,
       add_argu: add_argu,
@@ -448,6 +448,7 @@ ali2lines.to_a.reverse.each do |count, lines|
         add_argu_with_fs.sub!(/[-s]ft\s+\S+/, '')
         add_argu_special = add_argu_with_fs.gsub(/[-]fs\s+\S+/, '').strip
 
+        #guide tree
         run_iqtree(
           s: "#{bs_suboutdir}/combined.phy",
           pre: "#{bs_suboutdir}/guide",
@@ -489,7 +490,7 @@ ali2lines.to_a.reverse.each do |count, lines|
         bootstrap_argu: bootstrap_argu
       )
     end
-  else
+  else #pbs
     # generate the ML tree
     run_iqtree(
       s: ali_file1,

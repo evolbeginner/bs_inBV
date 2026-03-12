@@ -1,6 +1,5 @@
 #! /bin/env ruby
 
-
 def render_progress(count, total, width: 40)
   total = 1 if total <= 0
   ratio = [[count.to_f / total, 0.0].max, 1.0].min
@@ -11,20 +10,39 @@ def render_progress(count, total, width: 40)
     print "\r[#{bar}] #{format('%6.2f', ratio * 100)}% (#{count}/#{total})"
     $stdout.flush
   else
-    # Non-TTY: avoid carriage-return spam
     puts "#{format('%6.2f', ratio * 100)}% (#{count}/#{total})"
   end
 end
 
-
 def progressbar_for_bootstrapping(file:, total:, interval: 0.2)
   stop = false
+  cmd_q = Queue.new
 
   thr = Thread.new do
     count = 0
     pos = 0
 
     loop do
+      # handle commands
+      until cmd_q.empty?
+        cmd, payload = cmd_q.pop(true) rescue break
+        case cmd
+        when :reset
+          count = 0
+          pos = 0
+          if payload[:truncate_file] && File.exist?(file)
+            File.truncate(file, 0)
+          end
+          if $stdout.tty?
+            print "\r\e[2K" # clear line
+            $stdout.flush
+          end
+          render_progress(0, total)
+        when :stop
+          stop = true
+        end
+      end
+
       break if stop
 
       if File.exist?(file)
@@ -32,12 +50,11 @@ def progressbar_for_bootstrapping(file:, total:, interval: 0.2)
           begin
             io.seek(pos, IO::SEEK_SET)
           rescue Errno::EINVAL
-            # file rotated/truncated
             pos = 0
             io.seek(0, IO::SEEK_SET)
           end
 
-          io.each_line { count += 1 } # only count newly appended lines
+          io.each_line { count += 1 }
           pos = io.pos
         end
 
@@ -48,14 +65,19 @@ def progressbar_for_bootstrapping(file:, total:, interval: 0.2)
     end
   end
 
-  # return a stopper lambda
-  lambda do
-    stop = true
-    thr.join
-    render_progress(total, total)
-    puts if $stdout.tty?
-  end
+  {
+    reset: lambda { |truncate_file: false|
+      cmd_q << [:reset, { truncate_file: truncate_file }]
+    },
+    stop: lambda {
+      cmd_q << [:stop, {}]
+      thr.join
+      render_progress(total, total)
+      puts if $stdout.tty?
+    }
+  }
 end
+
 
 
 ##########################################

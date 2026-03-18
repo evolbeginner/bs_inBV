@@ -1,3 +1,6 @@
+### v1.4.5 — 2026-03-18
+- **New:** Copy the gaps when doing parametric bootstrap, the same way as IQ-Tree alisim.
+
 ### v1.4.4 — 2026-03-12
 - **New:** Fixed some bugs.
 

@@ -32,6 +32,7 @@ FIGTREE2NWK ||= File.expand_path(File.join(LIB_DIR, 'figtree2tree.sh'))
 EXTRACT_PARAM_FROM_IQTREE = File.join(LIB_DIR, "extract_param_from_iqtree_file.rb")
 BS_PHYLIP = File.join(LIB_DIR, "bs_phylip_noallgap.rb")
 BS_PMSF = File.join(LIB_DIR, "pmsf_sitewise_alisim.rb")
+TRANSFER_GAP = File.join(LIB_DIR, "transfer_gaps.rb")
 #SOURCE_IQTREE = File.expand_path("~/software/phylo/iqtree/source/v3.0.1/iqtree3")
 
 ############################################################
@@ -214,8 +215,11 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
       ` ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null `
       seq_file = File.join(param_bs_outdir, '1', 'combined.phy')
     else
-      ` #{IQTREE} --alisim #{param_bs_outdir}/simulated_MSA -t #{mltree_file} -m #{model_best} --length #{seqlen} `
-      seq_file = File.join(param_bs_outdir, 'simulated_MSA.phy')
+      seed = Random.new_seed % 10000000
+      ` #{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}`
+      seq_ori_file = File.join(param_bs_outdir, 'combined.phy')
+      seq_file = File.join(param_bs_outdir, 'combined.gap.phy')
+      ` ruby #{TRANSFER_GAP} #{ali_file1} #{seq_ori_file} #{seq_file} `
     end
     raise "IQ-TREE --alisim failed at bootstrap #{c}" unless $?.success?
     run_iqtree(
@@ -561,5 +565,4 @@ if is_run_mcmctree
     puts "Done!" if $? == 0
   end
 end
-
 

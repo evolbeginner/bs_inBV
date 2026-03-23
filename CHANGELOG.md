@@ -1,14 +1,18 @@
+### v1.4.6 — 2026-03-23
+- **Fixed:** `--no_mwopt` bug fixed (might not turn of `-mwopt` in iqtree in prior versions when specified).
+- **Fixed:** multi-thread corrected (in prior versions `-nt 1` might be used in iqtree).
+
 ### v1.4.5 — 2026-03-18
 - **New:** Copy the gaps when doing parametric bootstrap, the same way as IQ-Tree alisim.
 
 ### v1.4.4 — 2026-03-12
-- **New:** Fixed some bugs.
+- **Fixed:** Fixed some bugs.
 
 ### v1.4.3 — 2026-03-12
 - **New:** Improved `--param_bs` (or `--bs pbs`), `--best_fit [y]`
 
 ### v1.4.2 — 2026-03-12
-- **New:** Improved `--param_bs`. Now parametric bs is better performed and particularly the script `lib/pmsf_sitewise_alisim.rb` helps simulating alignment under pmsf.
+- **Improved** `--param_bs`. Now parametric bs is better performed and particularly the script `lib/pmsf_sitewise_alisim.rb` helps simulating alignment under pmsf.
 
 ### v1.4.1 — 2026-03-10
 - **New:** Added `--full_pmsf`.

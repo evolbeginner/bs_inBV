@@ -232,6 +232,7 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
     )
 
     system("cat #{param_bs_outdir}/iqtree.treefile >> #{boottree_file}")
+    system(`rm -rf #{param_bs_outdir}`)
   end
 end
 
@@ -367,13 +368,13 @@ opts.each do |opt, value|
     add_argu.sub!('-mwopt', '')
   when '--best_fit', '--best-fit'
     is_best_fit = true
-    is_best_fit = false if value.nil? and value =~ /No|N/i
+    is_best_fit = false if value.nil? or value =~ /No|N/i
   when '--param_bs', '--param_bootstrap'
     is_param_bs = true
   when '--bs'
-    if value =~ /^param|pbs|param_bs$/
+    if value =~ /^(param|pbs|param_bs)$/
       is_param_bs = true
-    elsif value =~ /^npbs|nonparam_bs|bs$/
+    elsif value =~ /^(npbs|nonparam_bs|bs)$/
       is_param_bs = false
     end
   end
@@ -441,6 +442,7 @@ ali2lines.to_a.reverse.each do |count, lines|
 
   if not is_param_bs #for nonparam bs
     if is_full_pmsf
+      p "haha"
       bs_outdir = File.join(iqtree_outdir, 'bs')
       mkdir_with_force(bs_outdir)
       ` ruby #{BS_PHYLIP} --outdir #{bs_outdir} -i #{ali_file1} -b #{bootstrap} `
@@ -464,7 +466,7 @@ ali2lines.to_a.reverse.each do |count, lines|
         run_iqtree(
           s: "#{bs_suboutdir}/combined.phy",
           pre: "#{bs_suboutdir}/iqtree",
-          nt: thread,
+          nt: cpu,
           model_argu: model_argu,
           te_argu: te_argu,
           add_argu: add_argu_special,
@@ -487,7 +489,7 @@ ali2lines.to_a.reverse.each do |count, lines|
       run_iqtree(
         s: ali_file1,
         pre: "#{iqtree_outdir}/iqtree",
-        nt: thread,
+        nt: cpu,
         model_argu: model_argu_new,
         te_argu: te_argu,
         add_argu: add_argu,
@@ -499,7 +501,7 @@ ali2lines.to_a.reverse.each do |count, lines|
     run_iqtree(
       s: ali_file1,
       pre: "#{iqtree_outdir}/iqtree",
-      nt: thread,
+      nt: cpu,
       model_argu: model_argu_new,
       te_argu: te_argu,
       add_argu: add_argu

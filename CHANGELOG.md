@@ -1,3 +1,6 @@
+### v1.4.7 — 2026-04-02
+- **Fixed:** Fixed a bug that gapped alignment is not used for PMSF models.
+
 ### v1.4.6 — 2026-03-23
 - **Fixed:** `--no_mwopt` bug fixed (might not turn of `-mwopt` in iqtree in prior versions when specified).
 - **Fixed:** multi-thread corrected (in prior versions `-nt 1` might be used in iqtree).

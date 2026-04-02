@@ -153,17 +153,6 @@ def output_gapped_seq(outdir_split1, ali_file1, lines)
 end
 
 
-# helper (put near other helper methods)
-def run_with_retry(max_try: 3)
-  1.upto(max_try) do |i|
-    return true if yield
-    warn "[retry] attempt #{i}/#{max_try} failed"
-    sleep(1) if i < max_try
-  end
-  false
-end
-
-
 ############################################################
 def get_seqlen_from_phylip(ali_file1)
   File.open(ali_file1) { |f| f.readline.split[1].to_i }

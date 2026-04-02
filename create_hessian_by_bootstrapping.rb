@@ -210,17 +210,21 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
   Parallel.map(1..bootstrap, in_threads: cpu) do |c|
     param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
     mkdir_with_force(param_bs_outdir, true)
+
     if is_pmsf
-      #puts "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force "
       ` ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null `
-      seq_file = File.join(param_bs_outdir, '1', 'combined.phy')
+      src_dir = File.join(param_bs_outdir, '1')
+      dst_dir = param_bs_outdir
+      entries = Dir.glob(File.join(src_dir, '*'))   # all non-hidden items
+      FileUtils.mv(entries, dst_dir) unless entries.empty?
     else
       seed = Random.new_seed % 10000000
       ` #{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}`
-      seq_ori_file = File.join(param_bs_outdir, 'combined.phy')
-      seq_file = File.join(param_bs_outdir, 'combined.gap.phy')
-      ` ruby #{TRANSFER_GAP} #{ali_file1} #{seq_ori_file} #{seq_file} `
     end
+    seq_ori_file = File.join(param_bs_outdir, 'combined.phy')
+    seq_file = File.join(param_bs_outdir, 'combined.gap.phy')
+    ` ruby #{TRANSFER_GAP} #{ali_file1} #{seq_ori_file} #{seq_file} `
+
     raise "IQ-TREE --alisim failed at bootstrap #{c}" unless $?.success?
     run_iqtree(
       s: seq_file,
@@ -232,7 +236,7 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
     )
 
     system("cat #{param_bs_outdir}/iqtree.treefile >> #{boottree_file}")
-    system(`rm -rf #{param_bs_outdir}`)
+    #system(`rm -rf #{param_bs_outdir}`)
   end
 end
 
@@ -442,7 +446,6 @@ ali2lines.to_a.reverse.each do |count, lines|
 
   if not is_param_bs #for nonparam bs
     if is_full_pmsf
-      p "haha"
       bs_outdir = File.join(iqtree_outdir, 'bs')
       mkdir_with_force(bs_outdir)
       ` ruby #{BS_PHYLIP} --outdir #{bs_outdir} -i #{ali_file1} -b #{bootstrap} `
@@ -555,7 +558,7 @@ if is_run_mcmctree
   Dir.chdir(mcmctree_outdir)
 
   thr = progressbar_for_bootstrapping(file: 'mcmc.txt', total: get_iter_num(File.basename(mcmctree_ctl_file)))
-  thr.call
+  thr[:stop].call
 
   `#{MCMCTREE} #{File.basename(mcmctree_ctl_file)} > mcmctree.final`
 

@@ -152,6 +152,18 @@ def output_gapped_seq(outdir_split1, ali_file1, lines)
   out_fh_all_gap_seq.close
 end
 
+
+# helper (put near other helper methods)
+def run_with_retry(max_try: 3)
+  1.upto(max_try) do |i|
+    return true if yield
+    warn "[retry] attempt #{i}/#{max_try} failed"
+    sleep(1) if i < max_try
+  end
+  false
+end
+
+
 ############################################################
 def get_seqlen_from_phylip(ali_file1)
   File.open(ali_file1) { |f| f.readline.split[1].to_i }
@@ -201,42 +213,79 @@ def setup_split_dirs(outdir_split, count, lines)
 end
 
 
-def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file, is_pmsf)
+def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu, add_argu, bootstrap, cpu, mltree_file, boottree_file, is_pmsf, max_try: 3, sleep_sec: 2)
+  # ref_tree_file is currently unused in this method, kept for interface compatibility
   model_best = `ruby #{EXTRACT_PARAM_FROM_IQTREE} --iqtree #{iqtree_outdir}/iqtree.iqtree --log #{iqtree_outdir}/iqtree.log | tail -n 1`.chomp
+  raise "Failed to parse best model from IQ-TREE output" if model_best.nil? || model_best.empty?
+
   seqlen = get_seqlen_from_phylip(ali_file1)
   add_argu_pbs = add_argu.sub('-keep-ident', '')
   add_argu_pbs = add_argu_pbs.sub(/[-]fs/, '--fs')
 
-  Parallel.map(1..bootstrap, in_threads: cpu) do |c|
-    param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
-    mkdir_with_force(param_bs_outdir, true)
+  treefiles = Parallel.map(1..bootstrap, in_threads: cpu) do |c|
+    attempt = 0
 
-    if is_pmsf
-      ` ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null `
-      src_dir = File.join(param_bs_outdir, '1')
-      dst_dir = param_bs_outdir
-      entries = Dir.glob(File.join(src_dir, '*'))   # all non-hidden items
-      FileUtils.mv(entries, dst_dir) unless entries.empty?
-    else
-      seed = Random.new_seed % 10000000
-      ` #{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}`
+    begin
+      attempt += 1
+      #STDERR.puts "[param_bs replicate #{c}] attempt #{attempt}/#{max_try}" if attempt >= 2
+
+      param_bs_outdir = File.join(iqtree_outdir, 'param_bs', c.to_s)
+
+      # clean replicate dir for a fresh retry
+      FileUtils.rm_rf(param_bs_outdir)
+      mkdir_with_force(param_bs_outdir, true)
+
+      if is_pmsf
+        src_dir = File.join(param_bs_outdir, '1')
+        cmd = "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null"
+        raise "BS_PMSF command failed" unless `#{cmd}`
+
+        entries = Dir.glob(File.join(src_dir, '*'))
+        raise "BS_PMSF produced no files" if entries.empty?
+
+        FileUtils.mv(entries, param_bs_outdir)
+      else
+        seed = Random.new_seed % 10_000_000
+        cmd = "#{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}"
+        raise "IQTREE --alisim command failed" unless `#{cmd}`
+
+        seq_ori_check = File.join(param_bs_outdir, 'combined.phy')
+        raise "combined.phy not found after --alisim" unless File.exist?(seq_ori_check)
+      end
+
+      seq_ori_file = File.join(param_bs_outdir, 'combined.phy')
+      seq_file     = File.join(param_bs_outdir, 'combined.gap.phy')
+      raise "TRANSFER_GAP failed" unless ` ruby #{TRANSFER_GAP} #{ali_file1} #{seq_ori_file} #{seq_file} `
+      raise "combined.gap.phy not found after TRANSFER_GAP" unless File.exist?(seq_file)
+
+      run_iqtree(
+        s: seq_file,
+        pre: "#{param_bs_outdir}/iqtree",
+        nt: 1,
+        model_argu: model_argu_new,
+        te_argu: te_argu,
+        add_argu: add_argu
+      )
+
+      tf = File.join(param_bs_outdir, 'iqtree.treefile')
+      raise "Missing iqtree.treefile" unless File.exist?(tf)
+
+      tf
+    rescue => e
+      if attempt < max_try
+        STDERR.puts "[param_bs replicate #{c}] failed: #{e.message}; retrying in #{sleep_sec}s..."
+        sleep(sleep_sec)
+        retry
+      else
+        raise "[param_bs replicate #{c}] failed after #{max_try} attempts: #{e.message}"
+      end
     end
-    seq_ori_file = File.join(param_bs_outdir, 'combined.phy')
-    seq_file = File.join(param_bs_outdir, 'combined.gap.phy')
-    ` ruby #{TRANSFER_GAP} #{ali_file1} #{seq_ori_file} #{seq_file} `
+  end
 
-    raise "IQ-TREE --alisim failed at bootstrap #{c}" unless $?.success?
-    run_iqtree(
-      s: seq_file,
-      pre: "#{param_bs_outdir}/iqtree",
-      nt: 1,
-      model_argu: model_argu_new,
-      te_argu: te_argu,
-      add_argu: add_argu
-    )
-
-    system("cat #{param_bs_outdir}/iqtree.treefile >> #{boottree_file}")
-    #system(`rm -rf #{param_bs_outdir}`)
+  # write boottrees only after all replicates succeed
+  FileUtils.rm_f(boottree_file)
+  File.open(boottree_file, 'a') do |fh|
+    treefiles.each { |tf| fh.write(File.read(tf)) }
   end
 end
 

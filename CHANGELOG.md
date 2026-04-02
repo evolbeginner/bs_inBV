@@ -1,3 +1,6 @@
+### v1.4.8 — 2026-04-02
+- **Improved:** Re-run `IQ-Tree` for upto 3 times if failed, for arametric bootstrapping (`--bs pbs`).
+
 ### v1.4.7 — 2026-04-02
 - **Fixed:** Fixed a bug that gapped alignment is not used for PMSF models.
 

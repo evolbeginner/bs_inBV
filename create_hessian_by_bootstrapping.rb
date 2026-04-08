@@ -227,6 +227,7 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
       if is_pmsf
         src_dir = File.join(param_bs_outdir, '1')
         cmd = "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null"
+        p cmd
         raise "BS_PMSF command failed" unless `#{cmd}`
 
         entries = Dir.glob(File.join(src_dir, '*'))

@@ -227,7 +227,6 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
       if is_pmsf
         src_dir = File.join(param_bs_outdir, '1')
         cmd = "ruby #{BS_PMSF} -t #{iqtree_outdir}/iqtree.treefile #{add_argu_pbs} #{model_argu_new} --nrep 1 --outdir #{param_bs_outdir} --cpu #{cpu} --force >/dev/null"
-        p cmd
         raise "BS_PMSF command failed" unless `#{cmd}`
 
         entries = Dir.glob(File.join(src_dir, '*'))
@@ -236,7 +235,8 @@ def do_param_bs(iqtree_outdir, ref_tree_file, model_argu_new, ali_file1, te_argu
         FileUtils.mv(entries, param_bs_outdir)
       else
         seed = Random.new_seed % 10_000_000
-        cmd = "#{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}"
+        cmd = "#{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} #{model_argu_new} --length #{seqlen} -seed #{seed}"
+        #cmd = "#{IQTREE} --alisim #{param_bs_outdir}/combined -t #{mltree_file} -m #{model_best} --length #{seqlen} -seed #{seed}"
         raise "IQTREE --alisim command failed" unless `#{cmd}`
 
         seq_ori_check = File.join(param_bs_outdir, 'combined.phy')

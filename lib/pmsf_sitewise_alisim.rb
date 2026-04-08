@@ -153,6 +153,7 @@ end
 
 def run_cmd!(cmd)
   ok = system(*cmd)
+  #puts cmd.join(' ')
   abort("Command failed:\n#{cmd.join(' ')}") unless ok
 end
 
@@ -192,19 +193,20 @@ Parallel.each(1..opts[:nrep], in_processes: opts[:cpu]) do |rep|
       model = "#{opts[:m]}+F{#{fstr}}"
       outpre = File.join(td, "grp_#{gi + 1}")
       #seed = opts[:seed] #+ rep * 1_000_003 + gi
+      seed = Random.new_seed % 10_000_000
 
       cmd = [
         opts[:iqtree],
         "--alisim", outpre,
         "-t", opts[:tree],
+        "-st", "AA",
         "-m", model,
         "--length", m.to_s,
-        #"--seed", seed.to_s,
+        "--seed", seed.to_s,
         "-nt", "1",
         "-redo",
         "-quiet"
       ]
-      p cmd
       run_cmd!(cmd)
 
       phy = "#{outpre}.phy"

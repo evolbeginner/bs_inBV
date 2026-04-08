@@ -1,3 +1,6 @@
+### v1.4.8.1 — 2026-04-08
+- **Fixed:** Fixed a bug when `-m LG+C60+G+PMSF` due to the bracket `{}` in the most recent version of `IQ-Tree` (`alisim`)`.
+
 ### v1.4.8 — 2026-04-02
 - **Improved:** Re-run `IQ-Tree` for upto 3 times if failed, for arametric bootstrapping (`--bs pbs`).
 
